@@ -21,9 +21,14 @@
 	<bean id="stringToByteBuf_Convert" class="co.kr.converter.StringToByteBuf" />
 	
 	<camelContext xmlns="http://camel.apache.org/schema/spring" >
-		<!-- 파일 폴링 후 네티 클라이언트로 보낸다.  -->
+		<!--
+		 파일 폴링 후 네티 클라이언트로 보낸다.
+		 option : delay:최초 바로 폴링한후 시간차
+		          move :파일을 성공적으로 처리하면 하위 done폴더를 생성하고 backup한다.
+		          idempotent : 이동하려는 done폴더에 이미 같은파일이 있으면 처리하지 않고 skip한다. 
+		 -->
 		<route>
-			<from uri="file://fileBox"/>
+			<from uri="file://fileBox?delay=10000&amp;move=done&amp;idempotent=true"/>
 		  	<to   uri="direct:start" />
 		</route>	
 	
@@ -42,7 +47,7 @@
 		<!-- camel netty4 tcp -->
 		<route>
 			<from uri="netty4:tcp://localhost:22222?workerCount=1&amp;serverPipelineFactory=#serverInitFactory" />
-			<log message="[SERVER]message:${body}" loggingLevel="DEBUG"></log>
+			<log message="[SERVER]message:[${body}]" loggingLevel="DEBUG"></log>
 		</route>
 	</camelContext>
 
