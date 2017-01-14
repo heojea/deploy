@@ -21,15 +21,20 @@
 	<bean id="stringToByteBuf_Convert" class="co.kr.converter.StringToByteBuf" />
 	
 	<camelContext xmlns="http://camel.apache.org/schema/spring" >
+		<!-- 파일 폴링 후 네티 클라이언트로 보낸다.  -->
+		<route>
+			<from uri="file://fileBox"/>
+		  	<to   uri="direct:start" />
+		</route>	
+	
 		<route>
 			<from uri="timer://BANK?repeatCount=1" />
+			<bean ref="getString" />
 			<to   uri="direct:start" />
 		</route>
 
 		<route>
 			<from uri="direct:start" />
-			<bean ref="getString" />
-			<!-- <bean ref="getByteBuf" /> -->
 			<bean ref="stringToByteBuf_Convert" />
 			<to   uri="netty4:tcp://localhost:22222?workerCount=1&amp;clientPipelineFactory=#clientInitFactory" />
 		</route>
@@ -42,23 +47,3 @@
 	</camelContext>
 
 </beans>
-
-
-
-
-<!-- 단순 샘플 case 1 start -->
-<!-- <route> <from uri="timer://BANK?repeatCount=1" /> <setBody> <simple>sample 
-	value=======>>>></simple> </setBody> <to uri="netty4:tcp://localhost:1111?textline=true&amp;sync=true&amp;usingExecutorService=false"/> 
-	</route> <route> <from uri="netty4:tcp://localhost:1111?textline=true&amp;sync=true&amp;usingExecutorService=false"/> 
-	<to uri="log:result"/> </route> -->
-<!-- 단순 샘플 case 1 end -->
-
-<!-- <route> <from uri="netty:tcp://0.0.0.0:30000" /> <to uri="stream:err" 
-	/> <convertBodyTo type="java.lang.String" charset="euc-kr" /> <convertBodyTo 
-	type="byte[]" /> <to uri="file:target/recevied?fileName=data-${date:now:yyyyMMdd-HHmmssSSS}.xml&amp;charset=euc-kr" 
-	/> </route> <route> <from uri="file:src/data?noop=true"/> <choice> <when> 
-	<xpath>/person/city = 'London'</xpath> <log message="UK message"/> <to uri="file:target/messages/uk"/> 
-	</when> <otherwise> <log message="Other message"/> <to uri="file:target/messages/others"/> 
-	</otherwise> </choice> <convertBodyTo type="java.lang.String" /> <convertBodyTo 
-	type="byte[]" /> <to uri="netty:tcp://0.0.0.0:30000" /> <to uri="stream:err" 
-	/> </route> -->
