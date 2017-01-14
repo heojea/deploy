@@ -3,7 +3,6 @@ package co.kr.init.client;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelPipeline;
 
-import org.apache.camel.CamelContext;
 import org.apache.camel.component.netty4.ClientInitializerFactory;
 import org.apache.camel.component.netty4.NettyProducer;
 import org.slf4j.Logger;
@@ -13,17 +12,14 @@ import co.kr.handler.client.ClientInBoundHandHandler;
 
 public class ClientInitFactory extends ClientInitializerFactory  {
 	private Logger LOG = LoggerFactory.getLogger(ClientInitFactory.class);
-	NettyProducer producer;
-	CamelContext camelContext;
-	
+	private NettyProducer producer;
 	ClientInitFactory(){
+		
 	}
 	
 	ClientInitFactory(NettyProducer producer){
 		LOG.debug("ClientInitFactory  initial[{}]", producer.getEndpoint().getEndpointUri());
-		this.producer     = producer;
-		this.camelContext = producer.getContext();
-		this.camelContext.getShutdownStrategy().setTimeout(3);
+		this.producer = producer;
 	}
 	
 	@Override
@@ -36,7 +32,7 @@ public class ClientInitFactory extends ClientInitializerFactory  {
 		LOG.debug("[CLINET]initChannel chid[{}]",ch.toString());
 		ChannelPipeline p = ch.pipeline();
 		//p.addLast(new LoggingHandler());
-		p.addLast(new ClientInBoundHandHandler());
+		p.addLast(new ClientInBoundHandHandler(this.producer));
 	}
 
 }

@@ -12,17 +12,24 @@ import co.kr.handler.server.ServerInBoundHandHandler;
 
 public class ServerInitFactory extends ServerInitializerFactory  {
 	private Logger LOG = LoggerFactory.getLogger(ServerInitFactory.class);
+	private NettyConsumer nettyConsumer;
+	
+	public ServerInitFactory(){}
+	
+	public ServerInitFactory(NettyConsumer nettyConsumer) {
+		this.nettyConsumer = nettyConsumer;
+	}
 
 	@Override
-	public ServerInitializerFactory createPipelineFactory(NettyConsumer consumer) {
+	public ServerInitializerFactory createPipelineFactory(NettyConsumer nettyConsumer) {
 		
-		return new ServerInitFactory();
+		return new ServerInitFactory(nettyConsumer);
 	}
 
 	@Override
 	protected void initChannel(Channel ch) throws Exception {
 		ChannelPipeline p = ch.pipeline();
-		p.addLast(new ServerInBoundHandHandler());
+		p.addLast(new ServerInBoundHandHandler(this.nettyConsumer));
 	}
 	
 	
