@@ -21,7 +21,6 @@
 	<bean id="stringToByteBuf_Convert" class="co.kr.converter.StringToByteBuf" />
 	
 	<camelContext xmlns="http://camel.apache.org/schema/spring" >
-		
 		<route>
 			<from uri="timer://BANK?repeatCount=1" />
 			<to   uri="direct:start" />
