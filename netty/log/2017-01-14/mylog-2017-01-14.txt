@@ -1,0 +1,200 @@
+2017-01-14 16:26:53,764 [main] INFO  org.apache.camel.main.MainSupport - Apache Camel 2.14.2 starting
+2017-01-14 16:26:54,043 [main] DEBUG o.a.c.s.h.CamelNamespaceHandler - Using org.apache.camel.spring.CamelContextFactoryBean as CamelContextBeanDefinitionParser
+2017-01-14 16:26:54,484 [main] DEBUG o.a.c.s.h.CamelNamespaceHandler - Registered default: org.apache.camel.spring.CamelProducerTemplateFactoryBean with id: template on camel context: camel-1
+2017-01-14 16:26:54,484 [main] DEBUG o.a.c.s.h.CamelNamespaceHandler - Registered default: org.apache.camel.spring.CamelConsumerTemplateFactoryBean with id: consumerTemplate on camel context: camel-1
+2017-01-14 16:26:54,544 [main] DEBUG i.n.u.i.l.InternalLoggerFactory - Using SLF4J as the default logging framework
+2017-01-14 16:26:54,571 [main] DEBUG i.n.util.internal.PlatformDependent0 - java.nio.Buffer.address: available
+2017-01-14 16:26:54,571 [main] DEBUG i.n.util.internal.PlatformDependent0 - sun.misc.Unsafe.theUnsafe: available
+2017-01-14 16:26:54,571 [main] DEBUG i.n.util.internal.PlatformDependent0 - sun.misc.Unsafe.copyMemory: available
+2017-01-14 16:26:54,572 [main] DEBUG i.n.util.internal.PlatformDependent0 - java.nio.Bits.unaligned: true
+2017-01-14 16:26:54,572 [main] DEBUG i.n.util.internal.PlatformDependent0 - java.nio.DirectByteBuffer.<init>(long, int): available
+2017-01-14 16:26:54,572 [main] DEBUG i.n.util.internal.PlatformDependent - Platform: Windows
+2017-01-14 16:26:54,572 [main] DEBUG i.n.util.internal.PlatformDependent - Java version: 8
+2017-01-14 16:26:54,572 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.noUnsafe: false
+2017-01-14 16:26:54,572 [main] DEBUG i.n.util.internal.PlatformDependent - sun.misc.Unsafe: available
+2017-01-14 16:26:54,573 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.noJavassist: false
+2017-01-14 16:26:54,573 [main] DEBUG i.n.util.internal.PlatformDependent - Javassist: unavailable
+2017-01-14 16:26:54,573 [main] DEBUG i.n.util.internal.PlatformDependent - You don't have Javassist in your class path or you don't have enough permission to load dynamically generated classes.  Please check the configuration for better performance.
+2017-01-14 16:26:54,574 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.tmpdir: C:\Users\heojea\AppData\Local\Temp (java.io.tmpdir)
+2017-01-14 16:26:54,574 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.bitMode: 32 (sun.arch.data.model)
+2017-01-14 16:26:54,574 [main] DEBUG i.n.util.internal.PlatformDependent - -Dio.netty.noPreferDirect: false
+2017-01-14 16:26:54,574 [main] DEBUG i.n.util.internal.PlatformDependent - io.netty.maxDirectMemory: 259522560 bytes
+2017-01-14 16:26:54,583 [main] DEBUG io.netty.buffer.AbstractByteBuf - -Dio.netty.buffer.bytebuf.checkAccessible: true
+2017-01-14 16:26:54,584 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.level: simple
+2017-01-14 16:26:54,584 [main] DEBUG io.netty.util.ResourceLeakDetector - -Dio.netty.leakDetection.maxRecords: 4
+2017-01-14 16:26:54,914 [main] DEBUG o.a.camel.spring.SpringCamelContext - Set the application context classloader to: sun.misc.Launcher$AppClassLoader@16f6e28
+2017-01-14 16:26:54,952 [main] DEBUG o.a.c.c.x.AbstractCamelContextFactoryBean - Setting up routes
+2017-01-14 16:26:54,960 [main] DEBUG o.a.c.c.x.AbstractCamelContextFactoryBean - Found JAXB created routes: [Route[[From[timer://BANK?repeatCount=1]] -> [To[direct:start]]], Route[[From[direct:start]] -> [Bean[ref:getString], Bean[ref:stringToByteBuf_Convert], To[netty4:tcp://localhost:22222?workerCount=1&clientPipelineFactory=#clientInitFactory]]], Route[[From[netty4:tcp://localhost:22222?workerCount=1&serverPipelineFactory=#serverInitFactory]] -> [Log[[SERVER]message:${body}]]]]
+2017-01-14 16:26:54,961 [main] DEBUG o.a.camel.spring.SpringCamelContext - onApplicationEvent: org.springframework.context.event.ContextRefreshedEvent[source=org.springframework.context.support.ClassPathXmlApplicationContext@16905e: startup date [Sat Jan 14 16:26:53 KST 2017]; root of context hierarchy]
+2017-01-14 16:26:54,961 [main] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.14.2 (CamelContext: camel-1) is starting
+2017-01-14 16:26:54,961 [main] DEBUG o.a.camel.spring.SpringCamelContext - Using ClassResolver=org.apache.camel.impl.DefaultClassResolver@17c473a, PackageScanClassResolver=org.apache.camel.impl.DefaultPackageScanClassResolver@4bd84a, ApplicationContextClassLoader=sun.misc.Launcher$AppClassLoader@16f6e28
+2017-01-14 16:26:54,962 [main] INFO  o.a.c.m.ManagedManagementStrategy - JMX is enabled
+2017-01-14 16:26:55,048 [main] DEBUG o.a.c.m.DefaultManagementAgent - Starting JMX agent on server: com.sun.jmx.mbeanserver.JmxMBeanServer@13f02ee
+2017-01-14 16:26:55,094 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=context,name="camel-1"
+2017-01-14 16:26:55,094 [main] DEBUG o.a.c.support.TimerListenerManager - Added TimerListener: org.apache.camel.management.mbean.ManagedCamelContext@c79fa2
+2017-01-14 16:26:55,094 [main] DEBUG o.a.c.m.DefaultManagementLifecycleStrategy - Registering 1 pre registered services
+2017-01-14 16:26:55,095 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=components,name="spring-event"
+2017-01-14 16:26:55,111 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=DefaultTypeConverter
+2017-01-14 16:26:55,119 [main] DEBUG o.a.c.i.c.AnnotationTypeConverterLoader - Found 3 packages with 15 @Converter classes to load
+2017-01-14 16:26:55,135 [main] DEBUG o.a.c.i.c.AnnotationTypeConverterLoader - Loading file META-INF/services/org/apache/camel/TypeConverter to retrieve list of packages, from url: jar:file:/C:/Users/heojea/.m2/repository/org/apache/camel/camel-netty4/2.16.0/camel-netty4-2.16.0.jar!/META-INF/services/org/apache/camel/TypeConverter
+2017-01-14 16:26:55,135 [main] DEBUG o.a.c.i.c.AnnotationTypeConverterLoader - Loading file META-INF/services/org/apache/camel/TypeConverter to retrieve list of packages, from url: jar:file:/C:/Users/heojea/.m2/repository/org/apache/camel/camel-core/2.14.2/camel-core-2.14.2.jar!/META-INF/services/org/apache/camel/TypeConverter
+2017-01-14 16:26:55,136 [main] DEBUG o.a.c.i.c.AnnotationTypeConverterLoader - Loading file META-INF/services/org/apache/camel/TypeConverter to retrieve list of packages, from url: jar:file:/C:/Users/heojea/.m2/repository/org/apache/camel/camel-spring/2.14.2/camel-spring-2.14.2.jar!/META-INF/services/org/apache/camel/TypeConverter
+2017-01-14 16:26:55,137 [main] DEBUG o.a.c.i.c.AnnotationTypeConverterLoader - Loaded 2 @Converter classes
+2017-01-14 16:26:55,139 [main] INFO  o.a.c.i.c.DefaultTypeConverter - Loaded 190 type converters
+2017-01-14 16:26:55,142 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=EndpointRegistry
+2017-01-14 16:26:55,142 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=DefaultExecutorServiceManager
+2017-01-14 16:26:55,143 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=SharedProducerServicePool
+2017-01-14 16:26:55,143 [main] DEBUG o.a.c.impl.SharedProducerServicePool - Starting service pool: org.apache.camel.impl.SharedProducerServicePool@2cc639
+2017-01-14 16:26:55,143 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=DefaultInflightRepository
+2017-01-14 16:26:55,144 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=DefaultShutdownStrategy
+2017-01-14 16:26:55,145 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=DefaultPackageScanClassResolver
+2017-01-14 16:26:55,146 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=services,name=DefaultRestRegistry
+2017-01-14 16:26:55,149 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=eventnotifiers,name=EventNotifier(0xcd267f)
+2017-01-14 16:26:55,153 [main] DEBUG o.a.camel.spring.SpringCamelContext - Using ComponentResolver: org.apache.camel.impl.DefaultComponentResolver@554a3b to resolve component with name: timer
+2017-01-14 16:26:55,153 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: timer in registry: null
+2017-01-14 16:26:55,155 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: timer via type: org.apache.camel.component.timer.TimerComponent via: META-INF/services/org/apache/camel/component/timer
+2017-01-14 16:26:55,174 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=components,name="timer"
+2017-01-14 16:26:55,174 [main] DEBUG o.apache.camel.impl.DefaultComponent - Creating endpoint uri=[timer://BANK?repeatCount=1], path=[BANK]
+2017-01-14 16:26:55,176 [main] DEBUG o.a.camel.util.IntrospectionSupport - Configured property: repeatCount on bean: Endpoint[timer://BANK?repeatCount=1] with value: 1
+2017-01-14 16:26:55,176 [main] DEBUG o.a.camel.spring.SpringCamelContext - timer://BANK?repeatCount=1 converted to endpoint: Endpoint[timer://BANK?repeatCount=1] by component: org.apache.camel.component.timer.TimerComponent@1f1ec20
+2017-01-14 16:26:55,179 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=endpoints,name="timer://BANK\?repeatCount=1"
+2017-01-14 16:26:55,182 [main] DEBUG o.a.camel.spring.SpringCamelContext - Using ComponentResolver: org.apache.camel.impl.DefaultComponentResolver@554a3b to resolve component with name: direct
+2017-01-14 16:26:55,182 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: direct in registry: null
+2017-01-14 16:26:55,183 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: direct via type: org.apache.camel.component.direct.DirectComponent via: META-INF/services/org/apache/camel/component/direct
+2017-01-14 16:26:55,185 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=components,name="direct"
+2017-01-14 16:26:55,185 [main] DEBUG o.apache.camel.impl.DefaultComponent - Creating endpoint uri=[direct://start], path=[start]
+2017-01-14 16:26:55,185 [main] DEBUG o.a.camel.spring.SpringCamelContext - direct://start converted to endpoint: Endpoint[direct://start] by component: org.apache.camel.component.direct.DirectComponent@811494
+2017-01-14 16:26:55,186 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=endpoints,name="direct://start"
+2017-01-14 16:26:55,188 [main] DEBUG o.a.c.p.interceptor.DefaultChannel - Initialize channel for target: 'To[direct:start]'
+2017-01-14 16:26:55,194 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=tracer,name=BacklogTracer
+2017-01-14 16:26:55,199 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=tracer,name=BacklogDebugger
+2017-01-14 16:26:55,210 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=errorhandlers,name="DefaultErrorHandlerBuilder(ref:CamelDefaultErrorHandlerBuilder)"
+2017-01-14 16:26:55,224 [main] DEBUG o.a.camel.spring.SpringCamelContext - Using ComponentResolver: org.apache.camel.impl.DefaultComponentResolver@554a3b to resolve component with name: bean
+2017-01-14 16:26:55,224 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: bean in registry: null
+2017-01-14 16:26:55,224 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: bean via type: org.apache.camel.component.bean.BeanComponent via: META-INF/services/org/apache/camel/component/bean
+2017-01-14 16:26:55,228 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=components,name="bean"
+2017-01-14 16:26:55,234 [main] DEBUG o.a.c.p.interceptor.DefaultChannel - Initialize channel for target: 'Bean[ref:getString]'
+2017-01-14 16:26:55,236 [main] DEBUG o.a.c.p.interceptor.DefaultChannel - Initialize channel for target: 'Bean[ref:stringToByteBuf_Convert]'
+2017-01-14 16:26:55,237 [main] DEBUG o.a.camel.spring.SpringCamelContext - Using ComponentResolver: org.apache.camel.impl.DefaultComponentResolver@554a3b to resolve component with name: netty4
+2017-01-14 16:26:55,237 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: netty4 in registry: null
+2017-01-14 16:26:55,238 [main] DEBUG o.a.c.impl.DefaultComponentResolver - Found component: netty4 via type: org.apache.camel.component.netty4.NettyComponent via: META-INF/services/org/apache/camel/component/netty4
+2017-01-14 16:26:55,245 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=components,name="netty4"
+2017-01-14 16:26:55,264 [main] DEBUG o.apache.camel.impl.DefaultComponent - Creating endpoint uri=[netty4://tcp://localhost:22222?clientPipelineFactory=%23clientInitFactory&workerCount=1], path=[tcp://localhost:22222]
+2017-01-14 16:26:55,268 [main] DEBUG o.a.camel.util.IntrospectionSupport - Configured property: workerCount on bean: org.apache.camel.component.netty4.NettyConfiguration@10cb4a4 with value: 1
+2017-01-14 16:26:55,273 [main] DEBUG o.a.c.c.netty4.NettyConfiguration - Using object encoders and decoders
+2017-01-14 16:26:55,274 [main] DEBUG o.a.camel.spring.SpringCamelContext - netty4://tcp://localhost:22222?clientPipelineFactory=%23clientInitFactory&workerCount=1 converted to endpoint: Endpoint[tcp://localhost:22222] by component: org.apache.camel.component.netty4.NettyComponent@64b240
+2017-01-14 16:26:55,275 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=endpoints,name="tcp://localhost:22222"
+2017-01-14 16:26:55,275 [main] DEBUG o.a.c.p.interceptor.DefaultChannel - Initialize channel for target: 'To[netty4:tcp://localhost:22222?workerCount=1&clientPipelineFactory=#clientInitFactory]'
+2017-01-14 16:26:55,276 [main] DEBUG o.apache.camel.impl.DefaultComponent - Creating endpoint uri=[netty4://tcp://localhost:22222?serverPipelineFactory=%23serverInitFactory&workerCount=1], path=[tcp://localhost:22222]
+2017-01-14 16:26:55,276 [main] DEBUG o.a.camel.util.IntrospectionSupport - Configured property: workerCount on bean: org.apache.camel.component.netty4.NettyConfiguration@d10c1a with value: 1
+2017-01-14 16:26:55,276 [main] DEBUG o.a.c.c.netty4.NettyConfiguration - Using object encoders and decoders
+2017-01-14 16:26:55,276 [main] DEBUG o.a.camel.spring.SpringCamelContext - netty4://tcp://localhost:22222?serverPipelineFactory=%23serverInitFactory&workerCount=1 converted to endpoint: Endpoint[tcp://localhost:22222] by component: org.apache.camel.component.netty4.NettyComponent@64b240
+2017-01-14 16:26:55,276 [main] DEBUG o.a.c.m.DefaultManagementAgent - MBean already registered with ObjectName: org.apache.camel:context=camel-1,type=endpoints,name="tcp://localhost:22222"
+2017-01-14 16:26:55,288 [main] DEBUG org.apache.camel.model.LogDefinition - The LogName is null. Falling back to create logger by using the route id route3.
+2017-01-14 16:26:55,288 [main] DEBUG o.a.c.p.interceptor.DefaultChannel - Initialize channel for target: 'Log[[SERVER]message:${body}]'
+2017-01-14 16:26:55,289 [main] INFO  o.a.camel.spring.SpringCamelContext - AllowUseOriginalMessage is enabled. If access to the original message is not needed, then its recommended to turn this option off as it may improve performance.
+2017-01-14 16:26:55,289 [main] INFO  o.a.camel.spring.SpringCamelContext - StreamCaching is not in use. If using streams then its recommended to enable stream caching. See more details at http://camel.apache.org/stream-caching.html
+2017-01-14 16:26:55,289 [main] DEBUG o.a.camel.spring.SpringCamelContext - Warming up route id: route1 having autoStartup=true
+2017-01-14 16:26:55,289 [main] DEBUG org.apache.camel.impl.RouteService - Starting services on route: route1
+2017-01-14 16:26:55,290 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route1 -> Channel[sendTo(Endpoint[direct://start])]
+2017-01-14 16:26:55,293 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=producers,name=DirectProducer(0x124ffa1)
+2017-01-14 16:26:55,294 [main] DEBUG o.a.c.c.direct.DirectProducer - Starting producer: Producer[direct://start]
+2017-01-14 16:26:55,294 [main] DEBUG org.apache.camel.impl.ProducerCache - Adding to producer cache with key: Endpoint[direct://start] for producer: Producer[direct://start]
+2017-01-14 16:26:55,294 [main] DEBUG o.a.c.processor.DefaultErrorHandler - Redelivery enabled: false on error handler: DefaultErrorHandler[Instrumentation:to[sendTo(Endpoint[direct://start])]]
+2017-01-14 16:26:55,294 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route1 -> sendTo(Endpoint[direct://start])
+2017-01-14 16:26:55,300 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=processors,name="to1"
+2017-01-14 16:26:55,300 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route1 -> Channel[sendTo(Endpoint[direct://start])]
+2017-01-14 16:26:55,306 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=routes,name="route1"
+2017-01-14 16:26:55,306 [main] DEBUG o.a.c.support.TimerListenerManager - Added TimerListener: org.apache.camel.management.mbean.ManagedSuspendableRoute@1c44dec
+2017-01-14 16:26:55,307 [main] DEBUG o.a.camel.spring.SpringCamelContext - Warming up route id: route2 having autoStartup=true
+2017-01-14 16:26:55,307 [main] DEBUG org.apache.camel.impl.RouteService - Starting services on route: route2
+2017-01-14 16:26:55,307 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> Pipeline[[Channel[BeanProcessor[co.kr.vo.StringFactory(0xe47444)]], Channel[BeanProcessor[co.kr.converter.StringToByteBuf(0x1bd0fa6)]], Channel[sendTo(Endpoint[tcp://localhost:22222])]]]
+2017-01-14 16:26:55,307 [main] DEBUG o.a.c.processor.DefaultErrorHandler - Redelivery enabled: false on error handler: DefaultErrorHandler[Instrumentation:bean[BeanProcessor[co.kr.vo.StringFactory(0xe47444)]]]
+2017-01-14 16:26:55,307 [main] DEBUG o.a.c.processor.DefaultErrorHandler - Redelivery enabled: false on error handler: DefaultErrorHandler[Instrumentation:bean[BeanProcessor[co.kr.converter.StringToByteBuf(0x1bd0fa6)]]]
+2017-01-14 16:26:55,313 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=producers,name=NettyProducer(0x140bb6e)
+2017-01-14 16:26:55,313 [main] DEBUG o.a.c.component.netty4.NettyProducer - Starting producer: Producer[tcp://localhost:22222]
+2017-01-14 16:26:55,315 [main] DEBUG i.n.c.MultithreadEventLoopGroup - -Dio.netty.eventLoopThreads: 8
+2017-01-14 16:26:55,319 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.noKeySetOptimization: false
+2017-01-14 16:26:55,320 [main] DEBUG io.netty.channel.nio.NioEventLoop - -Dio.netty.selectorAutoRebuildThreshold: 512
+2017-01-14 16:26:55,386 [main] DEBUG o.a.c.component.netty4.NettyProducer - Created NettyProducer pool[maxActive=-1, minIdle=0, maxIdle=100, minEvictableIdleTimeMillis=300000] -> org.apache.commons.pool.impl.GenericObjectPool@1c22d4f
+2017-01-14 16:26:55,386 [main] DEBUG co.kr.init.client.ClientInitFactory - ClientInitFactory  initial[tcp://localhost:22222]
+2017-01-14 16:26:55,386 [main] DEBUG org.apache.camel.impl.ProducerCache - Adding to producer cache with key: Endpoint[tcp://localhost:22222] for producer: Producer[tcp://localhost:22222]
+2017-01-14 16:26:55,386 [main] DEBUG o.a.c.processor.DefaultErrorHandler - Redelivery enabled: false on error handler: DefaultErrorHandler[Instrumentation:to[sendTo(Endpoint[tcp://localhost:22222])]]
+2017-01-14 16:26:55,386 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> Pipeline[[Channel[BeanProcessor[co.kr.vo.StringFactory(0xe47444)]], Channel[BeanProcessor[co.kr.converter.StringToByteBuf(0x1bd0fa6)]], Channel[sendTo(Endpoint[tcp://localhost:22222])]]]
+2017-01-14 16:26:55,386 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> BeanProcessor[co.kr.vo.StringFactory(0xe47444)]
+2017-01-14 16:26:55,389 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=processors,name="bean1"
+2017-01-14 16:26:55,389 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> Channel[BeanProcessor[co.kr.vo.StringFactory(0xe47444)]]
+2017-01-14 16:26:55,389 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> BeanProcessor[co.kr.converter.StringToByteBuf(0x1bd0fa6)]
+2017-01-14 16:26:55,390 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=processors,name="bean2"
+2017-01-14 16:26:55,390 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> Channel[BeanProcessor[co.kr.converter.StringToByteBuf(0x1bd0fa6)]]
+2017-01-14 16:26:55,390 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> sendTo(Endpoint[tcp://localhost:22222])
+2017-01-14 16:26:55,392 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=processors,name="to2"
+2017-01-14 16:26:55,392 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route2 -> Channel[sendTo(Endpoint[tcp://localhost:22222])]
+2017-01-14 16:26:55,396 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=routes,name="route2"
+2017-01-14 16:26:55,396 [main] DEBUG o.a.c.support.TimerListenerManager - Added TimerListener: org.apache.camel.management.mbean.ManagedSuspendableRoute@670130
+2017-01-14 16:26:55,397 [main] DEBUG o.a.camel.spring.SpringCamelContext - Warming up route id: route3 having autoStartup=true
+2017-01-14 16:26:55,397 [main] DEBUG org.apache.camel.impl.RouteService - Starting services on route: route3
+2017-01-14 16:26:55,398 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route3 -> Channel[Log(route3)[[SERVER]message:${body}]]
+2017-01-14 16:26:55,398 [main] DEBUG o.a.c.processor.DefaultErrorHandler - Redelivery enabled: false on error handler: DefaultErrorHandler[Instrumentation:log[Log(route3)[[SERVER]message:${body}]]]
+2017-01-14 16:26:55,398 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route3 -> Log(route3)[[SERVER]message:${body}]
+2017-01-14 16:26:55,400 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=processors,name="log1"
+2017-01-14 16:26:55,400 [main] DEBUG org.apache.camel.impl.RouteService - Starting child service on route: route3 -> Channel[Log(route3)[[SERVER]message:${body}]]
+2017-01-14 16:26:55,402 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=routes,name="route3"
+2017-01-14 16:26:55,402 [main] DEBUG o.a.c.support.TimerListenerManager - Added TimerListener: org.apache.camel.management.mbean.ManagedSuspendableRoute@1f417a7
+2017-01-14 16:26:55,402 [main] DEBUG o.a.camel.spring.SpringCamelContext - Route: route1 >>> EventDrivenConsumerRoute[Endpoint[timer://BANK?repeatCount=1] -> Channel[sendTo(Endpoint[direct://start])]]
+2017-01-14 16:26:55,402 [main] DEBUG o.a.camel.spring.SpringCamelContext - Starting consumer (order: 1000) on route: route1
+2017-01-14 16:26:55,403 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=consumers,name=TimerConsumer(0x1098f9b)
+2017-01-14 16:26:55,404 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: route1 started and consuming from: Endpoint[timer://BANK?repeatCount=1]
+2017-01-14 16:26:55,404 [main] DEBUG o.a.camel.spring.SpringCamelContext - Route: route2 >>> EventDrivenConsumerRoute[Endpoint[direct://start] -> Pipeline[[Channel[BeanProcessor[co.kr.vo.StringFactory(0xe47444)]], Channel[BeanProcessor[co.kr.converter.StringToByteBuf(0x1bd0fa6)]], Channel[sendTo(Endpoint[tcp://localhost:22222])]]]]
+2017-01-14 16:26:55,404 [main] DEBUG o.a.camel.spring.SpringCamelContext - Starting consumer (order: 1001) on route: route2
+2017-01-14 16:26:55,405 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=consumers,name=DirectConsumer(0x183649e)
+2017-01-14 16:26:55,405 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: route2 started and consuming from: Endpoint[direct://start]
+2017-01-14 16:26:55,405 [main] DEBUG o.a.camel.spring.SpringCamelContext - Route: route3 >>> EventDrivenConsumerRoute[Endpoint[tcp://localhost:22222] -> Channel[Log(route3)[[SERVER]message:${body}]]]
+2017-01-14 16:26:55,405 [main] DEBUG o.a.camel.spring.SpringCamelContext - Starting consumer (order: 1002) on route: route3
+2017-01-14 16:26:55,405 [main] DEBUG o.a.c.m.DefaultManagementAgent - Registered MBean with ObjectName: org.apache.camel:context=camel-1,type=consumers,name=NettyConsumer(0xe5a68e)
+2017-01-14 16:26:55,405 [main] DEBUG o.a.c.component.netty4.NettyConsumer - Starting consumer: Consumer[tcp://localhost:22222]
+2017-01-14 16:26:55,405 [main] DEBUG o.a.c.component.netty4.NettyConsumer - Netty consumer binding to: localhost:22222
+2017-01-14 16:26:55,414 [main] DEBUG o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - Created ServerBootstrap ServerBootstrap(ServerBootstrapConfig(group: NioEventLoopGroup, channelFactory: NioServerSocketChannel.class, options: {SO_REUSEADDR=true}, childGroup: NioEventLoopGroup, childOptions: {SO_KEEPALIVE=true, TCP_NODELAY=true, SO_REUSEADDR=true, CONNECT_TIMEOUT_MILLIS=10000}, childHandler: co.kr.init.server.ServerInitFactory@f76a6))
+2017-01-14 16:26:55,414 [main] INFO  o.a.c.c.n.SingleTCPNettyServerBootstrapFactory - ServerBootstrap binding to localhost:22222
+2017-01-14 16:26:55,422 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.processId: 9092 (auto-detected)
+2017-01-14 16:26:55,498 [main] DEBUG io.netty.util.NetUtil - Loopback interface: lo (Software Loopback Interface 1, 127.0.0.1)
+2017-01-14 16:26:55,499 [main] DEBUG io.netty.util.NetUtil - \proc\sys\net\core\somaxconn: 200 (non-existent)
+2017-01-14 16:26:55,576 [main] DEBUG io.netty.channel.DefaultChannelId - -Dio.netty.machineId: c0:3f:d5:ff:fe:af:6c:3d (auto-detected)
+2017-01-14 16:26:55,577 [main] DEBUG i.n.util.internal.ThreadLocalRandom - -Dio.netty.initialSeedUniquifier: 0x8dfacc22361aa116
+2017-01-14 16:26:55,593 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numHeapArenas: 2
+2017-01-14 16:26:55,593 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.numDirectArenas: 2
+2017-01-14 16:26:55,593 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.pageSize: 8192
+2017-01-14 16:26:55,593 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxOrder: 11
+2017-01-14 16:26:55,594 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.chunkSize: 16777216
+2017-01-14 16:26:55,594 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.tinyCacheSize: 512
+2017-01-14 16:26:55,594 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.smallCacheSize: 256
+2017-01-14 16:26:55,594 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.normalCacheSize: 64
+2017-01-14 16:26:55,594 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.maxCachedBufferCapacity: 32768
+2017-01-14 16:26:55,594 [main] DEBUG i.n.buffer.PooledByteBufAllocator - -Dio.netty.allocator.cacheTrimInterval: 8192
+2017-01-14 16:26:55,603 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.allocator.type: pooled
+2017-01-14 16:26:55,603 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.threadLocalDirectBufferSize: 65536
+2017-01-14 16:26:55,603 [main] DEBUG io.netty.buffer.ByteBufUtil - -Dio.netty.maxThreadLocalCharBufferSize: 16384
+2017-01-14 16:26:55,610 [main] INFO  o.a.c.component.netty4.NettyConsumer - Netty consumer bound to: localhost:22222
+2017-01-14 16:26:55,610 [main] INFO  o.a.camel.spring.SpringCamelContext - Route: route3 started and consuming from: Endpoint[tcp://localhost:22222]
+2017-01-14 16:26:55,610 [main] DEBUG o.a.c.m.DefaultManagementLifecycleStrategy - Load performance statistics disabled
+2017-01-14 16:26:55,610 [main] INFO  o.a.camel.spring.SpringCamelContext - Total 3 routes, of which 3 is started.
+2017-01-14 16:26:55,612 [main] INFO  o.a.camel.spring.SpringCamelContext - Apache Camel 2.14.2 (CamelContext: camel-1) started in 0.649 seconds
+2017-01-14 16:26:55,614 [main] DEBUG org.apache.camel.main.MainSupport - Starting Spring ApplicationContext: org.springframework.context.support.ClassPathXmlApplicationContext@16905e
+2017-01-14 16:26:55,615 [main] DEBUG o.a.camel.spring.SpringCamelContext - onApplicationEvent: org.springframework.context.event.ContextStartedEvent[source=org.springframework.context.support.ClassPathXmlApplicationContext@16905e: startup date [Sat Jan 14 16:26:53 KST 2017]; root of context hierarchy]
+2017-01-14 16:26:56,634 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.camel.processor.SendProcessor - >>>> Endpoint[direct://start] Exchange[Message: [Body is null]]
+2017-01-14 16:26:56,641 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.camel.component.bean.MethodInfo - Setting bean invocation result on the IN message: TEST STRING===>1
+2017-01-14 16:26:56,645 [Camel (camel-1) thread #1 - timer://BANK] DEBUG co.kr.converter.StringToByteBuf - String s:[TEST STRING===>1], Exchange exchange:[Exchange[Message: TEST STRING===>1]]
+2017-01-14 16:26:56,651 [Camel (camel-1) thread #1 - timer://BANK] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.maxCapacity: 262144
+2017-01-14 16:26:56,651 [Camel (camel-1) thread #1 - timer://BANK] DEBUG io.netty.util.Recycler - -Dio.netty.recycler.linkCapacity: 16
+2017-01-14 16:26:56,668 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.camel.component.bean.MethodInfo - Setting bean invocation result on the IN message: SimpleLeakAwareByteBuf(PooledUnsafeDirectByteBuf(ridx: 0, widx: 16, cap: 16))
+2017-01-14 16:26:56,669 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.camel.processor.SendProcessor - >>>> Endpoint[tcp://localhost:22222] Exchange[Message: TEST STRING===>1]
+2017-01-14 16:26:56,675 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.c.component.netty4.NettyProducer - Created new TCP client bootstrap connecting to localhost:22222 with options: Bootstrap(BootstrapConfig(group: NioEventLoopGroup, channelFactory: NioSocketChannel.class, options: {SO_KEEPALIVE=true, TCP_NODELAY=true, SO_REUSEADDR=true, CONNECT_TIMEOUT_MILLIS=10000}, handler: co.kr.init.client.ClientInitFactory@1aa672b, resolver: io.netty.resolver.DefaultAddressResolverGroup@15d8e6d))
+2017-01-14 16:26:56,682 [Camel Thread #2 - NettyClientTCPWorker] DEBUG co.kr.init.client.ClientInitFactory - [CLINET]initChannel chid[[id: 0x3308ac24]]
+2017-01-14 16:26:56,687 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.c.component.netty4.NettyProducer - Creating connector to address: localhost:22222
+2017-01-14 16:26:56,689 [Camel Thread #3 - NettyServerTCPWorker] DEBUG c.k.h.s.ServerInBoundHandHandler - [SERVER]channelActive:bf24bcfa
+2017-01-14 16:26:56,689 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.c.component.netty4.NettyProducer - Channel: [id: 0x3308ac24, L:/127.0.0.1:5871 - R:localhost/127.0.0.1:22222] writing body: SimpleLeakAwareByteBuf(PooledUnsafeDirectByteBuf(ridx: 0, widx: 16, cap: 16))
+2017-01-14 16:26:56,715 [Camel Thread #3 - NettyServerTCPWorker] DEBUG c.k.h.s.ServerInBoundHandHandler - Channel: [id: 0xbf24bcfa, L:/127.0.0.1:22222 - R:/127.0.0.1:5871] received body: PooledUnsafeDirectByteBuf(ridx: 0, widx: 16, cap: 1024)
+2017-01-14 16:26:56,717 [Camel Thread #3 - NettyServerTCPWorker] DEBUG route3 - [SERVER]message:TEST STRING===>1
+2017-01-14 16:26:56,717 [Camel Thread #3 - NettyServerTCPWorker] DEBUG c.k.h.s.ServerInBoundHandHandler - Channel: [id: 0xbf24bcfa, L:/127.0.0.1:22222 - R:/127.0.0.1:5871] writing body: PooledUnsafeDirectByteBuf(ridx: 0, widx: 16, cap: 1024)
+2017-01-14 16:26:56,718 [Camel Thread #2 - NettyClientTCPWorker] DEBUG c.k.h.c.ClientInBoundHandHandler - Channel: [id: 0x3308ac24, L:/127.0.0.1:5871 - R:localhost/127.0.0.1:22222] received body: PooledUnsafeDirectByteBuf(ridx: 0, widx: 16, cap: 1024)
+2017-01-14 16:26:57,610 [Camel (camel-1) thread #1 - timer://BANK] DEBUG o.a.c.component.timer.TimerConsumer - Cancelling BANK timer as repeat count limit reached after 1 counts.
