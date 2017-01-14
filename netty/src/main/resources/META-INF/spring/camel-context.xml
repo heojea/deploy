@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Configures the Camel Context-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+
+	  <!-- client init factory -->
+	  <bean id="clientInitFactory" class="co.kr.init.client.ClientInitFactory" />
+	  <bean id="serverInitFactory" class="co.kr.init.server.ServerInitFactory" />	  
+	  
+	  
+	  <!-- test data make -->
+	  <bean id="getByteBuf" class="co.kr.vo.ByteBufFactory" init-method="getByteBuf" />
+
+	  <camelContext xmlns="http://camel.apache.org/schema/spring">
+	  
+	  	<!-- <route id="use_server">
+	  		<from uri="direct:start" />
+	  		<bean ref="getByteBuf" />
+	  		<to   uri="netty4:tcp://localhost:22222?usingExecutorService=false&amp;producerPoolEnabled=true&amp;clientPipelineFactory=#clientInitFactory"/>
+	  		<to   uri="netty4:tcp://localhost:22222?lazyChannelCreation=false&amp;producerPoolEnabled=false&amp;clientPipelineFactory=#clientInitFactory"/>
+	  	</route> -->
+	  	
+	  	
+	  	<route id="use_server">
+	  		<from uri="timer://BANK?repeatCount=3" />
+	  		<bean ref="getByteBuf" />
+	  		<to   uri="netty4:tcp://localhost:22222?clientPipelineFactory=#clientInitFactory&amp;keepAlive=false" />
+	  		<!-- <to   uri="netty4:tcp://localhost:22222?lazyChannelCreation=false&amp;producerPoolEnabled=false&amp;clientPipelineFactory=#clientInitFactory"/> -->
+	  	</route>
+	  	
+	  	<!-- <route id="use_server_start">
+	  		<from uri="timer://BANK?repeatCount=100" />
+	  		<to   uri="direct:start"/>
+	  		<to   uri="netty4:tcp://localhost:22222?lazyChannelCreation=false&amp;producerPoolEnabled=true&amp;clientPipelineFactory=#clientInitFactory"/>
+	  	</route>  -->
+	  	
+	  	<route>
+			<from uri="netty4:tcp://localhost:22222?serverPipelineFactory=#serverInitFactory"/>
+			<to   uri="log:result"/>
+		</route>   
+ 	  
+		<!-- 단순 샘플 case 1 start -->
+	  	<!-- <route>
+	  		<from uri="timer://BANK?repeatCount=1" />
+	  		<setBody>
+	  			<simple>sample value=======>>>></simple>
+	  		</setBody>
+	  		<to   uri="netty4:tcp://localhost:1111?textline=true&amp;sync=true&amp;usingExecutorService=false"/>
+	  	</route>
+	  	<route>
+			<from uri="netty4:tcp://localhost:1111?textline=true&amp;sync=true&amp;usingExecutorService=false"/>
+			<to   uri="log:result"/>
+		</route> -->
+	  	<!-- 단순 샘플 case 1 end -->
+	  	
+	  	
+	  	
+	  	
+	  	
+	  	
+	     <!-- <route>
+	    	<from uri="netty:tcp://0.0.0.0:30000" />
+	    	<to   uri="stream:err" />
+	    	<convertBodyTo type="java.lang.String" charset="euc-kr" />
+	    	<convertBodyTo type="byte[]" />
+	    	<to uri="file:target/recevied?fileName=data-${date:now:yyyyMMdd-HHmmssSSS}.xml&amp;charset=euc-kr" />
+	    </route>
+	         
+	    <route>
+	      <from uri="file:src/data?noop=true"/>
+	      <choice>
+	        <when>
+	          <xpath>/person/city = 'London'</xpath>
+	          <log message="UK message"/>
+	          <to uri="file:target/messages/uk"/>
+	        </when>
+	        <otherwise>
+	          <log message="Other message"/>
+	          <to uri="file:target/messages/others"/>
+	        </otherwise>
+	      </choice>
+	
+	      <convertBodyTo type="java.lang.String" />
+	      <convertBodyTo type="byte[]" />
+	      
+	      <to uri="netty:tcp://0.0.0.0:30000" />
+	      <to uri="stream:err" />
+	    </route> -->
+	  </camelContext>
+</beans>
