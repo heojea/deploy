@@ -31,6 +31,4 @@ public class ServerInitFactory extends ServerInitializerFactory  {
 		ChannelPipeline p = ch.pipeline();
 		p.addLast(new ServerInBoundHandHandler(this.nettyConsumer));
 	}
-	
-	
 }
