@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- scan:autoReconfigure  -->
+<configuration scan="true" scanPeriod="30 seconds" >
+	<!-- <property resource="properties/log.properties" /> -->
+	<!-- <property scope="context" name="nodeId" value="firstNode" /> -->
+	
+	<property name="user_home" value="./log" />
+	<timestamp key="date" datePattern="yyyy'-'MM'-'dd" />
+	<!-- <timestamp key="date" datePattern="yyyy'-'MM'-'dd'-'HHmm" /> -->
+	
+	 <!--
+     	  ** 날짜표시 **
+     	  - %d{HH:mm:ss.SSS}
+     	  - %date
+     	  
+         %msg:메시지 
+       , %n:줄바꿈 
+       , %contextName:contextName 초기 default
+     -->
+	
+  	<appender name="ROLLING"    class="ch.qos.logback.core.rolling.RollingFileAppender">
+	    <file>${user_home}/${date}/mylog-${date}.txt</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+	      <!-- rollover daily -->
+	      <fileNamePattern>${user_home}/${date}/mylog-%d{yyyy-MM-dd}.%i.txt</fileNamePattern>
+	      <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+	        <!-- or whenever the file size reaches 100MB -->
+	        <maxFileSize>1MB</maxFileSize>
+	      </timeBasedFileNamingAndTriggeringPolicy>
+	    </rollingPolicy>
+		 
+	    <encoder>
+	      <!-- <pattern>1번 타입 %date %level [%thread] %logger{10} [%file:%line] %msg%n</pattern> -->
+	      <!-- <pattern>2번 타입 %d %contextName [%t] %level %logger{36} - %msg%n</pattern> -->
+	      <pattern>%date [%thread] %-5level %logger{36} - %msg%n</pattern>
+	    </encoder>
+  	</appender>
+
+  	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+	    <encoder>
+	      <pattern>%date [%thread] %-5level %logger{36} - %msg%n</pattern>      
+	    </encoder>
+  	</appender>
+
+	<appender name="ASYNC_ROLLING" class="ch.qos.logback.classic.AsyncAppender">
+		<queueSize>100</queueSize>
+		<discardingThreshold>0</discardingThreshold>
+		<appender-ref ref="ROLLING" />
+	</appender>
+	
+  	<!-- <root level="DEBUG">
+   		<appender-ref ref="ASYNC_ROLLING" />
+   		<appender-ref ref="STDOUT" />
+   		
+  	</root> -->  
+  	
+   <root level="TRACE">
+   		<appender-ref ref="ASYNC_ROLLING" />
+   		<appender-ref ref="STDOUT" />
+   		
+  	</root>
+</configuration>
