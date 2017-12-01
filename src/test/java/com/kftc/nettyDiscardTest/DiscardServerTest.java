@@ -1,4 +1,4 @@
-package com.kftc.discardTest_1;
+package com.kftc.nettyDiscardTest;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
@@ -24,7 +24,7 @@ import com.kftc.Util.ByteBufUtil;
 import com.kftc.Util.CustomUtil;
 import com.kftc.handler.StringEncoder;
 
-public class DiscardServerTest_type_1 {
+public class DiscardServerTest {
 	//start setting
 	public static void main(String[] args) throws InterruptedException{
 	    EventLoopGroup bossGroup = new NioEventLoopGroup(2);

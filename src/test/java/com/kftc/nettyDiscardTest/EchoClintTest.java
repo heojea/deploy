@@ -1,4 +1,4 @@
-package com.kftc.discardTest_1;
+package com.kftc.nettyDiscardTest;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
@@ -23,7 +23,7 @@ import java.nio.file.Paths;
 
 import org.apache.commons.io.IOUtils;
 
-public class EchoClintTest_type_1 {
+public class EchoClintTest {
 	// start setting
 	public static void main(String[] args) throws InterruptedException {
 		EventLoopGroup group = new NioEventLoopGroup();
