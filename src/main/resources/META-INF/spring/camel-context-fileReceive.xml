@@ -8,6 +8,15 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring" >
+		<route>
+			<!--
+				옵션 :
+			-->
+			<from uri="file://fileBox?delay=5000&amp;move=done&amp;idempotent=true"/>
+			<log message="[SERVER]message:[${body}]" loggingLevel="DEBUG"></log>
+			<to   uri="direct:start" />
+		</route>
+
 
 	</camelContext>
 
