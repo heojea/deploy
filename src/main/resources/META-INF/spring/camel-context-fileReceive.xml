@@ -10,11 +10,15 @@
 	<camelContext xmlns="http://camel.apache.org/schema/spring" >
 		<route>
 			<!--
-				옵션 :
+				옵션설명
+				설명: move=done   fileBox폴더 아래 done폴더를 자동으로 만들어서 다읽은 파일을 이동시킨다.
+
+
 			-->
 			<from uri="file://fileBox?delay=5000&amp;move=done&amp;idempotent=true"/>
-			<log message="[SERVER]message:[${body}]" loggingLevel="DEBUG"></log>
-			<to   uri="direct:start" />
+			<!--<log message="[SERVER]message:[${body}]" loggingLevel="DEBUG"></log>-->
+			<!--<to   uri="direct:start" />-->
+			<to   uri="file:target/reports" />
 		</route>
 
 
