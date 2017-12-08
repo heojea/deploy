@@ -49,15 +49,13 @@
 		<appender-ref ref="ROLLING" />
 	</appender>
 	
-  	<!-- <root level="DEBUG">
+  	<root level="DEBUG">
    		<appender-ref ref="ASYNC_ROLLING" />
    		<appender-ref ref="STDOUT" />
-   		
-  	</root> -->  
-  	
-   <root level="TRACE">
-   		<appender-ref ref="ASYNC_ROLLING" />
-   		<appender-ref ref="STDOUT" />
-   		
   	</root>
+  	
+   <!--<root level="TRACE">
+   		<appender-ref ref="ASYNC_ROLLING" />
+   		<appender-ref ref="STDOUT" />
+  	</root>-->
 </configuration>

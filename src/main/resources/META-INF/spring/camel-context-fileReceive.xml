@@ -11,14 +11,14 @@
 		<route>
 			<!--
 				옵션설명
-				설명: move=done   fileBox폴더 아래 done폴더를 자동으로 만들어서 다읽은 파일을 이동시킨다.
-
-
+				설명: move=done        => fileBox폴더 아래 done폴더를 자동으로 만들어서 다읽은 파일을 이동시킨다.
+				     idempotent=true  => 이미처리된것은 처리 하지 않고 넘어가는 캐시같은 기능
+					fileExist=Append  => 같은파일에 내용을 붙여 넣기한다.
 			-->
-			<from uri="file://fileBox?delay=5000&amp;move=done&amp;idempotent=true"/>
+			<from uri="file://fileBox?delay=5000&amp;move=done&amp;idempotent=false"/>
 			<!--<log message="[SERVER]message:[${body}]" loggingLevel="DEBUG"></log>-->
 			<!--<to   uri="direct:start" />-->
-			<to   uri="file:target/reports" />
+			<to   uri="file:target/reports?fileExist=Append" />
 		</route>
 
 
