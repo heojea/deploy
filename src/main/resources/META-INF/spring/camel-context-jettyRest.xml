@@ -15,14 +15,13 @@
 	</bean>
 
 	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-		<endpoint id="baseInput" uri="jetty:http://localhost:9090?matchOnUriPrefix=true"/>
+		<endpoint id="baseInput" uri="jetty:http://localhost:9090/myapp/bye"/>
 
 		<route>
 			<from uri="baseInput"/>
-			<to uri="mock:foo" />
-			<!--<transform>
+			<transform>
 				<simple>Hello ${body}</simple>
-			</transform>-->
+			</transform>
 		</route>
 
 	</camelContext>
