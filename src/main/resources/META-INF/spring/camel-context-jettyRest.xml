@@ -15,14 +15,47 @@
 	</bean>
 
 	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+		<endpoint id="baseInput" uri="jetty:http://localhost:9090?matchOnUriPrefix=true"/>
 
 		<route>
-			<from uri="jetty:http://localhost:9090/myapp"/>
-			<transform>
+			<from uri="baseInput"/>
+			<to uri="mock:foo" />
+			<!--<transform>
 				<simple>Hello ${body}</simple>
-			</transform>
+			</transform>-->
 		</route>
 
 	</camelContext>
+
+	<!--<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json">
+			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
+			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
+		</restConfiguration>
+
+		<rest path="/say">
+			<get uri="/hello">
+				<to uri="direct:hello"/>
+			</get>
+			<get uri="/bye" consumes="application/json">
+				<to uri="direct:bye"/>
+			</get>
+			<post uri="/bye">
+				<to uri="mock:update"/>
+			</post>
+		</rest>
+		<route>
+			<from uri="direct:hello"/>
+			<transform>
+				<constant>Hello World</constant>
+			</transform>
+		</route>
+		<route>
+			<from uri="direct:bye"/>
+			<transform>
+				<constant>Bye World</constant>
+			</transform>
+		</route>
+	</camelContext>-->
 
 </beans>
