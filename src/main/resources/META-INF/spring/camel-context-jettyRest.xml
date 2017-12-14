@@ -15,10 +15,11 @@
 	</bean>
 
 	<camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
-		<endpoint id="baseInput" uri="jetty:http://localhost:9090/myapp/bye"/>
+		<endpoint id="baseInput" uri="jetty:http://localhost:9090/app"/>
 
 		<route>
 			<from uri="baseInput"/>
+			<!--<to uri="mock:foo" />-->
 			<transform>
 				<simple>Hello ${body}</simple>
 			</transform>
@@ -46,15 +47,10 @@
 		<route>
 			<from uri="direct:hello"/>
 			<transform>
-				<constant>Hello World</constant>
-			</transform>
-		</route>
-		<route>
-			<from uri="direct:bye"/>
-			<transform>
-				<constant>Bye World</constant>
+				<simple>Hello ${body}</simple>
 			</transform>
 		</route>
 	</camelContext>-->
+
 
 </beans>
