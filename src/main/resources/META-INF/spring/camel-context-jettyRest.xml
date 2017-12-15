@@ -40,14 +40,14 @@
 			<from uri="direct:hello"/>
 			<process ref="helloProcess" />
 			<transform>
-				<simple>Hello ${body}</simple>
+				<simple>${body}</simple>
 			</transform>
 		</route>
 
 		<route>
 			<from uri="direct:bye"/>
 			<transform>
-				<simple>Hello ${body}</simple>
+				<simple>${body}</simple>
 			</transform>
 		</route>
 	</camelContext>
