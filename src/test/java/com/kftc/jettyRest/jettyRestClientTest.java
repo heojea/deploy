@@ -60,7 +60,7 @@ public class jettyRestClientTest {
 
 			DefaultHttpClient httpClient = new DefaultHttpClient();
 			HttpPost postRequest = new HttpPost(
-				"http://localhost:8080/RESTfulExample/json/product/post");
+					"http://localhost:9090/say/hello");
 
 			StringEntity input = new StringEntity("{\"qty\":100,\"name\":\"iPad 4\"}");
 			input.setContentType("application/json");
