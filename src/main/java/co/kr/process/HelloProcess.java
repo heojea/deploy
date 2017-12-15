@@ -11,6 +11,13 @@ import org.apache.camel.Processor;
  */
 public class HelloProcess implements Processor {
     public void process(Exchange exchange) throws Exception {
-        System.out.println(exchange);
+        System.out.println("exchange.toString():::"+exchange.toString());
+        System.out.println("exchange.getIn().toString():::"+exchange.getIn().toString());
+        System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Accept"));
+        System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Accept-Language"));
+        System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Cache-Control"));
+
+        exchange.getOut().setBody("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+
     }
 }

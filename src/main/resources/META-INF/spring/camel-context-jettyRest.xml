@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 
+<!--
+	@heojea 20171215
+	@Auth : 허재연
+	@DESC : jetty 기반의 http rest 서버를 만들도록 한다. client는 별도로 만들지 않고 본 페이지에 만들도록 할것이다.
+-->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	   xsi:schemaLocation="
