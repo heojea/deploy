@@ -1,4 +1,4 @@
-package co.kr.process;
+package co.kr.jettyRest.process;
 
 
 import org.apache.camel.Exchange;
