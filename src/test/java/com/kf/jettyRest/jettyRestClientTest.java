@@ -1,4 +1,4 @@
-package com.kftc.jettyRest;
+package com.kf.jettyRest;
 
 import java.io.BufferedReader;
 import java.io.IOException;

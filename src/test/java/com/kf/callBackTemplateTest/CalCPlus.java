@@ -1,9 +1,9 @@
-package com.kftc.callBackTemplateTest;
+package com.kf.callBackTemplateTest;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-import com.kftc.callBackTemplateTest.interfaceC.ICallback;
+import com.kf.callBackTemplateTest.interfaceC.ICallback;
 
 public class CalCPlus implements ICallback<Integer>{
 

@@ -1,10 +1,10 @@
-package com.kftc.callBackTemplateTest;
+package com.kf.callBackTemplateTest;
 
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import com.kftc.callBackTemplateTest.interfaceC.ICallback;
+import com.kf.callBackTemplateTest.interfaceC.ICallback;
 
 public class MainAction {
 	public static void main(String[] args) throws IOException{

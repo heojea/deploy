@@ -1,4 +1,4 @@
-package com.kftc.nettyDiscardTest;
+package com.kf.nettyDiscardTest;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;

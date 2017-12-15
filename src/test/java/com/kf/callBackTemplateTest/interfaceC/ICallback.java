@@ -1,4 +1,4 @@
-package com.kftc.callBackTemplateTest.interfaceC;
+package com.kf.callBackTemplateTest.interfaceC;
 
 import java.io.BufferedReader;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.kftc.nettyDiscardTest;
+package com.kf.nettyDiscardTest;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.buffer.ByteBuf;
@@ -20,9 +20,9 @@ import java.io.RandomAccessFile;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
-import com.kftc.Util.ByteBufUtil;
-import com.kftc.Util.CustomUtil;
-import com.kftc.handler.StringEncoder;
+import com.kf.Util.ByteBufUtil;
+import com.kf.Util.CustomUtil;
+import com.kf.handler.StringEncoder;
 
 public class DiscardServerTest {
 	//start setting

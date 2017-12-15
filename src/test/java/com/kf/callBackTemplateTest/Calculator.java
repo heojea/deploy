@@ -1,10 +1,10 @@
-package com.kftc.callBackTemplateTest;
+package com.kf.callBackTemplateTest;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import com.kftc.callBackTemplateTest.interfaceC.ICallback;
+import com.kf.callBackTemplateTest.interfaceC.ICallback;
 
 class Calculator {
 	/**

@@ -1,4 +1,4 @@
-package com.kftc.파일만들기;
+package com.kf.파일만들기;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
