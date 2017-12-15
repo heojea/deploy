@@ -7,15 +7,17 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-
-	<bean id="helloProcess" class="" />
+	<!-- 스프링 빈을 이용하여 프로세서를 정의한다.-->
+	<bean id="helloProcess" class="co.kr.process.HelloProcess" />
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
+		<!-- 레스트 서버로 활용될 서저를 지정하고 옵션을 정의 한다. -->
 		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json" >
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
 		</restConfiguration>
 
+		<!-- 레스트 경로를 설정하는부분 document화 시켜야 한다. -->
 		<rest path="/say">
 			<get uri="/hello">
 				<to uri="direct:hello"/>
@@ -27,6 +29,8 @@
 				<to uri="mock:update"/>
 			</post>
 		</rest>
+
+		<!-- router 정의 부분  -->
 		<route>
 			<from uri="direct:hello"/>
 			<process ref="helloProcess" />
