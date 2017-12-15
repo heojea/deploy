@@ -37,15 +37,22 @@
 			<get uri="/hello">
 				<to uri="direct:hello"/>
 			</get>
-			<!--<get uri="/bye" consumes="application/json">
+			<get uri="/bye" consumes="application/json">
 				<to uri="direct:bye"/>
-			</get>-->
+			</get>
 			<post uri="/bye">
 				<to uri="mock:update"/>
 			</post>
 		</rest>
 		<route>
 			<from uri="direct:hello"/>
+			<transform>
+				<simple>Hello ${body}</simple>
+			</transform>
+		</route>
+
+		<route>
+			<from uri="direct:bye"/>
 			<transform>
 				<simple>Hello ${body}</simple>
 			</transform>
