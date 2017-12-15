@@ -28,7 +28,7 @@
 	</camelContext>-->
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
-		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json">
+		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json" >
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
 		</restConfiguration>
