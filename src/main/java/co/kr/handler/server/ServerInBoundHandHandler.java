@@ -41,25 +41,6 @@ public class ServerInBoundHandHandler extends ChannelInboundHandlerAdapter {
         consumer.getNettyServerBootstrapFactory().addChannel(ctx.channel());
     }
 
-    @Override
-    public void channelInactive(ChannelHandlerContext ctx) {
-        if (LOG.isTraceEnabled()) {
-            LOG.trace("Channel closed: {}", ctx.channel());
-        }
-        // to keep track of open sockets
-        consumer.getNettyServerBootstrapFactory().removeChannel(ctx.channel());
-    }
-
-    @Override
-    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        // only close if we are still allowed to run
-        if (consumer.isRunAllowed()) {
-            // let the exception handler deal with it
-            consumer.getExceptionHandler().handleException("Closing channel as an exception was thrown from Netty", cause);
-            // close channel in case an exception was thrown
-            NettyHelper.close(ctx.channel());
-        }
-    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -90,6 +71,27 @@ public class ServerInBoundHandHandler extends ChannelInboundHandlerAdapter {
             processAsynchronously(exchange, ctx, msg);
         }
     }
+
+    @Override
+    public void channelInactive(ChannelHandlerContext ctx) {
+        if (LOG.isTraceEnabled()) {
+            LOG.trace("Channel closed: {}", ctx.channel());
+        }
+        // to keep track of open sockets
+        consumer.getNettyServerBootstrapFactory().removeChannel(ctx.channel());
+    }
+
+    @Override
+    public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
+        // only close if we are still allowed to run
+        if (consumer.isRunAllowed()) {
+            // let the exception handler deal with it
+            consumer.getExceptionHandler().handleException("Closing channel as an exception was thrown from Netty", cause);
+            // close channel in case an exception was thrown
+            NettyHelper.close(ctx.channel());
+        }
+    }
+
 
     /**
      * Allows any custom logic before the {@link Exchange} is processed by the routing engine.
@@ -137,7 +139,7 @@ public class ServerInBoundHandHandler extends ChannelInboundHandlerAdapter {
         Object body = getResponseBody(exchange);
 
         if (body == null) {
-            noReplyLogger.log("No payload to send as reply for exchange: " + exchange);
+            //noReplyLogger.log("No payload to send as reply for exchange: " + exchange);
             if (consumer.getConfiguration().isDisconnectOnNoReply()) {
                 // must close session if no data to write otherwise client will never receive a response
                 // and wait forever (if not timing out)
