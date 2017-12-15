@@ -3,8 +3,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.kftc</groupId>
-	<artifactId>kftc-camel-tcp</artifactId>
+	<groupId>com.kf</groupId>
+	<artifactId>kf-camel-tcp</artifactId>
 	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
 
