@@ -17,7 +17,7 @@ public class HelloProcess implements Processor {
         System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Accept-Language"));
         System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Cache-Control"));
 
-        exchange.getOut().setBody("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        exchange.getOut().setBody("{aaa,aabvcd}");
 
     }
 }
