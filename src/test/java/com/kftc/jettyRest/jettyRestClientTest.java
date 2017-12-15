@@ -59,8 +59,7 @@ public class jettyRestClientTest {
 	  try {
 
 			DefaultHttpClient httpClient = new DefaultHttpClient();
-			HttpPost postRequest = new HttpPost(
-					"http://localhost:9090/say/hello");
+			HttpPost postRequest = new HttpPost("http://localhost:9090/say/bye");
 
 			StringEntity input = new StringEntity("{\"qty\":100,\"name\":\"iPad 4\"}");
 			input.setContentType("application/json");
@@ -68,7 +67,10 @@ public class jettyRestClientTest {
 
 			HttpResponse response = httpClient.execute(postRequest);
 
-			if (response.getStatusLine().getStatusCode() != 201) {
+			System.out.println(response.getStatusLine());
+			System.out.println(response.getStatusLine().getStatusCode());
+			
+			if (response.getStatusLine().getStatusCode() != 200) {
 				throw new RuntimeException("Failed : HTTP error code : "
 					+ response.getStatusLine().getStatusCode());
 			}
