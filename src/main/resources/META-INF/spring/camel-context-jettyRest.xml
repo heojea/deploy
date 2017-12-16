@@ -15,6 +15,8 @@
 	<!-- 스프링 빈을 이용하여 프로세서를 정의한다.-->
 	<bean id="helloProcess" class="co.kr.jettyRest.process.HelloProcess" />
 
+
+
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<!-- 레스트 서버로 활용될 서저를 지정하고 옵션을 정의 한다. -->
 		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json" >
