@@ -27,9 +27,9 @@
 			<get uri="/hello" consumes="application/json">
 				<to uri="direct:hello"/>
 			</get>
-			<get uri="/bye" consumes="application/json">
+			<!--<get uri="/bye" consumes="application/json">
 				<to uri="direct:bye"/>
-			</get>
+			</get>-->
 			<post uri="/bye" consumes="application/json">
 				<to uri="mock:update"/>
 			</post>
@@ -46,9 +46,7 @@
 
 		<route>
 			<from uri="direct:bye"/>
-			<transform>
-				<simple>${body}</simple>
-			</transform>
+			<process ref="helloProcess" />
 		</route>
 	</camelContext>
 </beans>
