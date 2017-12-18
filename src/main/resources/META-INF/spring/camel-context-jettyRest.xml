@@ -14,39 +14,65 @@
 
 	<!-- 스프링 빈을 이용하여 프로세서를 정의한다.-->
 	<bean id="helloProcess" class="co.kr.jettyRest.process.HelloProcess" />
+	<bean id="helloProcessPost" class="co.kr.jettyRest.process.HelloProcessPost" />
+
+	<!-- custom unmarshal  -->
+	<!--<bean id="customUnmarshal" class="co.kr.jettyRest.process.marshal.CustomUnmarshal" />-->
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
-		<!-- 레스트 서버로 활용될 서저를 지정하고 옵션을 정의 한다. -->
-		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true">
+		<!--
+			레스트 서버로 활용될 서저를 지정하고 옵션을 정의 한다.
+			bindingMode="json" json으로 지정
+		-->
+		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="auto"  enableCORS="true">
+			<!--<endpointProperty key="handlers" value="securityHandler" />-->
+			<!--<endpointProperty key="sessionSupport" value="true" />-->
+			<endpointProperty key="httpClient.idleTimeout" value="5000" />
+
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
+			<dataFormatProperty key="prettyPrint" value="true" />
+
 		</restConfiguration>
 
 		<!-- 레스트 경로를 설정하는부분 document화 시켜야 한다. -->
 		<rest path="/say">
 			<get uri="/hello" consumes="application/json">
-				<to uri="direct:hello"/>
+				<to uri="bean:helloProcess" />
 			</get>
 			<!--<get uri="/bye" consumes="application/json">
 				<to uri="direct:bye"/>
 			</get>-->
-			<post uri="/bye" consumes="application/json">
-				<to uri="mock:update"/>
-			</post>
+			<verb uri="/bye" bindingMode="auto" >
+				<to uri="bean:helloProcessPost" />
+			</verb>
+		</rest>
+
+		<rest path="/postUrl">
+			<verb uri="/bye" method="options" bindingMode="auto" >
+				<route>
+					<!--<setHeader headerName="Access-Control-Allow-Origin"><constant>*</constant></setHeader>
+					<setHeader headerName="Access-Control-Allow-Methods"><constant>GET,HEAD, POST, PUT, DELETE, OPTIONS</constant></setHeader>
+					<setHeader headerName="Access-Control-Allow-Headers"><constant>Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers</constant></setHeader>
+					<setHeader headerName="Allow"><constant>GET, HEAD, POST, PUT, DELETE,OPTIONS</constant></setHeader>-->
+					<to uri="bean:helloProcessPost" />
+				</route>
+			</verb>
 		</rest>
 
 		<!-- router 정의 부분  -->
-		<route>
+		<!--<route>
 			<from uri="direct:hello"/>
 			<process ref="helloProcess" />
-			<!-- <transform>
+			<transform>
 				<simple>${body}</simple>
-			</transform> -->
-		</route>
+			</transform>
+		</route>-->
 
-		<route>
+		<!--<route>
 			<from uri="direct:bye"/>
-			<process ref="helloProcess" />
-		</route>
+			<log message="process before log pring test ========= " />
+			<process ref="helloProcessPost" />
+		</route>-->
 	</camelContext>
 </beans>
