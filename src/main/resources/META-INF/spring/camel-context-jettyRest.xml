@@ -40,23 +40,17 @@
 			<get uri="/hello" consumes="application/json">
 				<to uri="bean:helloProcess" />
 			</get>
-			<!--<get uri="/bye" consumes="application/json">
-				<to uri="direct:bye"/>
-			</get>-->
-			<verb uri="/bye" bindingMode="auto" >
-				<to uri="bean:helloProcessPost" />
-			</verb>
 		</rest>
 
 		<rest path="/postUrl">
-			<verb uri="/bye" method="options" bindingMode="auto" >
-				<route>
-					<!--<setHeader headerName="Access-Control-Allow-Origin"><constant>*</constant></setHeader>
+			<verb uri="/bye" method="post"  >
+				<to uri="bean:helloProcessPost" />
+				<!--<route>
+					<setHeader headerName="Access-Control-Allow-Origin"><constant>*</constant></setHeader>
 					<setHeader headerName="Access-Control-Allow-Methods"><constant>GET,HEAD, POST, PUT, DELETE, OPTIONS</constant></setHeader>
 					<setHeader headerName="Access-Control-Allow-Headers"><constant>Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers</constant></setHeader>
-					<setHeader headerName="Allow"><constant>GET, HEAD, POST, PUT, DELETE,OPTIONS</constant></setHeader>-->
-					<to uri="bean:helloProcessPost" />
-				</route>
+					<setHeader headerName="Allow"><constant>GET, HEAD, POST, PUT, DELETE,OPTIONS</constant></setHeader>
+				</route>-->
 			</verb>
 		</rest>
 
