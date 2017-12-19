@@ -36,7 +36,26 @@
 			<dataFormatProperty key="prettyPrint" value="true" />
 		</restConfiguration>
 
-		<!-- GET 방식 기술 -->
+		<!--
+			### GET 방식 기술 ###
+			### client ajax GET call 방식 기술
+			$.ajax({
+					method : "GET",
+					url: "http://localhost:9090/say/hello",
+					data: {user:'GET-heojea',name:'GET-abcde'},
+					contentType : "text/plain", // 있어도 되고 없어도 되고
+					success: function (response) {
+						console.log(response);
+					},
+					complete: function (response) {
+						alert("complete ~~");
+					},
+					error: function (response) {
+						alert("Falla - " + response.d);
+					}
+			});
+
+		-->
 		<rest path="/say">
 			<get uri="/hello" consumes="application/json">
 				<to uri="bean:helloProcess" />
@@ -45,12 +64,12 @@
 
 		<!--
 			### POST 방식 기술 ####
-			### client ajax post call 방식 기술
+			### client ajax POST call 방식 기술
 			   $.ajax({
 					method : "POST",
 					url: "http://localhost:9090/postUrl/bye",
-					data: JSON.stringify({user:'heojea',name:'deahan'}),
-					contentType : "text/plain",
+					data: JSON.stringify({user:'heojea',name:'deahan'}),  //POST 방식은 꼭 stringify 해줘야함 에러남
+					contentType : "text/plain",    // 꼭 있어야됨 에러남
 					success: function (response) {
 						console.log(response);
 					},

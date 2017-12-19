@@ -1,15 +1,11 @@
 package co.kr.jettyRest.process;
 
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import co.kr.jettyRest.process.exception.CustomErrorResponse;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
-import org.apache.camel.spi.DataFormat;
 
 import javax.servlet.http.HttpServletResponse;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,10 +31,12 @@ public class HelloProcessPost implements Processor{
 
         HttpServletResponse response = (HttpServletResponse) exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE);
         Map<String,String> payload = new HashMap<>();
-        payload.put("id","2");
-        payload.put("content","User");
+        payload.put("id", "2");
+        payload.put("content", "User");
 
+        //response body 내용을 기술
         exchange.getOut().setBody(payload);
-    }
 
+        CustomErrorResponse.setErrorResponse(exchange,"CUSTOM ERROR RESPONSE ~~" ,"text/plain" , 502);
+    }
 }
