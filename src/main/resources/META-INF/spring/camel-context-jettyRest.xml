@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
-
 <!--
 	@heojea 20171215
 	@Auth : 허재연
 	@DESC : jetty 기반의 http rest 서버를 만들도록 한다. client는 별도로 만들지 않고 본 페이지에 만들도록 할것이다.
+
+	POST:::CREATE
+	GET:::READ
+	PUT:::UPDATE
+	DELETE:::DELETE
 -->
 <beans xmlns="http://www.springframework.org/schema/beans"
 	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -24,7 +27,7 @@
 			레스트 서버로 활용될 서저를 지정하고 옵션을 정의 한다.
 			bindingMode="json" json으로 지정
 		-->
-		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="auto"  enableCORS="true">
+		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true">
 			<!--<endpointProperty key="handlers" value="securityHandler" />-->
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
 			<endpointProperty key="httpClient.idleTimeout" value="5000" />
@@ -35,23 +38,18 @@
 
 		</restConfiguration>
 
-		<!-- 레스트 경로를 설정하는부분 document화 시켜야 한다. -->
+		<!-- GET 방식 기술 -->
 		<rest path="/say">
 			<get uri="/hello" consumes="application/json">
 				<to uri="bean:helloProcess" />
 			</get>
 		</rest>
 
+		<!-- POST 방식 기술 -->
 		<rest path="/postUrl">
-			<verb uri="/bye" method="post"  >
+			<post uri="/bye" consumes="application/json">
 				<to uri="bean:helloProcessPost" />
-				<!--<route>
-					<setHeader headerName="Access-Control-Allow-Origin"><constant>*</constant></setHeader>
-					<setHeader headerName="Access-Control-Allow-Methods"><constant>GET,HEAD, POST, PUT, DELETE, OPTIONS</constant></setHeader>
-					<setHeader headerName="Access-Control-Allow-Headers"><constant>Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers</constant></setHeader>
-					<setHeader headerName="Allow"><constant>GET, HEAD, POST, PUT, DELETE,OPTIONS</constant></setHeader>
-				</route>-->
-			</verb>
+			</post>
 		</rest>
 
 		<!-- router 정의 부분  -->

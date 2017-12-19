@@ -20,26 +20,32 @@ import java.util.Map;
  */
 public class HelloProcessPost implements Processor , DataFormat{
 	private ObjectMapper jacksonMapper;
-	  
     public void process(Exchange exchange) throws Exception {
     	jacksonMapper = new ObjectMapper();
+        /*
         System.out.println("exchange.toString():::"+exchange.toString());
         System.out.println("exchange.getIn().toString():::"+exchange.getIn().toString());
+        System.out.println("exchange.getOut().toString():::"+exchange.getOut().toString());
         System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Accept"));
         System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Accept-Language"));
         System.out.println("exchange.getIn().getHeaders().toString():::"+exchange.getIn().getHeader("Cache-Control"));
+
         System.out.println("exchange.getProperty(viewClass):::"+exchange.getProperty("viewClass"));
         System.out.println("exchange.getOut().getBody(OutputStream.class):::" + exchange.getIn().getBody(OutputStream.class));
         System.out.println("exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE):::" + exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE));
-        
+        */
+
+        Map<String,String> payload = new HashMap<>();
+
+
         HttpServletResponse response = (HttpServletResponse) exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE);
         
         //exchange.getOut().setBody("{\"id\":2,\"content\":\"Hello, User!\"}");
         //String responseString = "{\"id\":2,\"content\":\"Hello, User!\"}";
-        
-        Map<String,String> payload = new HashMap<>();
+
         payload.put("id","2");
         payload.put("content","User");
+
 
         //String json = new ObjectMapper().writeValueAsString(payload);
         this.marshal(exchange, payload , response.getOutputStream());
