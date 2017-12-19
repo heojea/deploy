@@ -8,6 +8,9 @@ import org.apache.camel.Processor;
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.List;
+import java.util.ArrayList;
+
 
 /**
  * Created by v.jyheo on 2017-12-15.
@@ -30,13 +33,22 @@ public class HelloProcessPost implements Processor{
         */
 
         HttpServletResponse response = (HttpServletResponse) exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE);
+        List<Map> list = new ArrayList();
         Map<String,String> payload = new HashMap<>();
         payload.put("id", "2");
         payload.put("content", "User");
+        list.add(payload);
+
+        payload = new HashMap<>();
+        payload.put("id", "4");
+        payload.put("content", "User11");
+
+        list.add(payload);
+
 
         //response body binding
         try{
-            exchange.getOut().setBody(payload);
+            exchange.getOut().setBody(list);
         }catch(Exception e){ //custom eror ocurr~
             CustomErrorResponse.setErrorResponse(exchange,"CUSTOM ERROR RESPONSE ~~" ,"text/plain" , 502);
         }

@@ -58,7 +58,7 @@
 		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true">
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
 			<!--<endpointProperty key="httpClient.idleTimeout" value="5000" />-->
-			<endpointProperty key="handlers" value="securityHandler" />
+			<!--<endpointProperty key="handlers" value="securityHandler" />-->
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
 			<!--<dataFormatProperty key="prettyPrint" value="true" />-->
@@ -112,7 +112,7 @@
 					}
 				});
 		-->
-		<rest path="/postUrl">
+		<rest path="/postUrl" >
 			<post uri="/bye">
 				<to uri="bean:helloProcessPost" />
 			</post>
