@@ -18,10 +18,8 @@ import java.util.Map;
  * 설명 : exchange 사용방법을 최대한 기술 하도록 한다.
  *       http rest 기반의 값들을 어떻게 가져오는지 확일 할수 있도록 한다.
  */
-public class HelloProcessPost implements Processor , DataFormat{
-	private ObjectMapper jacksonMapper;
+public class HelloProcessPost implements Processor{
     public void process(Exchange exchange) throws Exception {
-    	jacksonMapper = new ObjectMapper();
         /*
         System.out.println("exchange.toString():::"+exchange.toString());
         System.out.println("exchange.getIn().toString():::"+exchange.getIn().toString());
@@ -35,37 +33,12 @@ public class HelloProcessPost implements Processor , DataFormat{
         System.out.println("exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE):::" + exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE));
         */
 
-        Map<String,String> payload = new HashMap<>();
-
-
         HttpServletResponse response = (HttpServletResponse) exchange.getIn().getHeader(Exchange.HTTP_SERVLET_RESPONSE);
-        
-        //exchange.getOut().setBody("{\"id\":2,\"content\":\"Hello, User!\"}");
-        //String responseString = "{\"id\":2,\"content\":\"Hello, User!\"}";
-
+        Map<String,String> payload = new HashMap<>();
         payload.put("id","2");
         payload.put("content","User");
 
-
-        //String json = new ObjectMapper().writeValueAsString(payload);
-        this.marshal(exchange, payload , response.getOutputStream());
-        
+        exchange.getOut().setBody(payload);
     }
 
-	@Override
-	public void marshal(Exchange exchange, Object obj, OutputStream stream) throws Exception {
-        Class view = (Class) exchange.getProperty("viewClass");
-        if (view != null){
-            ObjectWriter w = jacksonMapper.writerWithView(view);
-            w.writeValue(stream, obj);
-        }else{
-            stream.write(jacksonMapper.writeValueAsBytes(obj));
-        }
-
-    }
-
-	@Override
-	public Object unmarshal(Exchange arg0, InputStream arg1) throws Exception {
-		return null;
-	}
 }

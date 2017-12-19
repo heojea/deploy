@@ -31,11 +31,9 @@
 			<!--<endpointProperty key="handlers" value="securityHandler" />-->
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
 			<endpointProperty key="httpClient.idleTimeout" value="5000" />
-
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
 			<dataFormatProperty key="prettyPrint" value="true" />
-
 		</restConfiguration>
 
 		<!-- GET 방식 기술 -->
@@ -45,9 +43,27 @@
 			</get>
 		</rest>
 
-		<!-- POST 방식 기술 -->
+		<!--
+			### POST 방식 기술 ####
+			### client ajax post call 방식 기술
+			   $.ajax({
+					method : "POST",
+					url: "http://localhost:9090/postUrl/bye",
+					data: JSON.stringify({user:'heojea',name:'deahan'}),
+					contentType : "text/plain",
+					success: function (response) {
+						console.log(response);
+					},
+					complete: function (response) {
+						alert("complete ~~");
+					},
+					error: function (response) {
+						alert("Falla - " + response.d);
+					}
+				});
+		-->
 		<rest path="/postUrl">
-			<post uri="/bye" consumes="application/json">
+			<post uri="/bye">
 				<to uri="bean:helloProcessPost" />
 			</post>
 		</rest>
