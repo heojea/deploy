@@ -15,21 +15,24 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
+	<!-- Jetty Security handling START -->
+
+	<!-- Jetty Security handling END -->
+
 	<!-- 스프링 빈을 이용하여 프로세서를 정의한다.-->
 	<bean id="helloProcess" class="co.kr.jettyRest.process.HelloProcess" />
 	<bean id="helloProcessPost" class="co.kr.jettyRest.process.HelloProcessPost" />
 
-	<!-- custom unmarshal  -->
-	<!--<bean id="customUnmarshal" class="CustomUnmarshal" />-->
-
+	<!-- camel Context -->
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<!--
 			레스트 서버로 활용될 서저를 지정하고 옵션을 정의 한다.
 			bindingMode="json" json으로 지정
 		-->
 		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true">
-			<!--<endpointProperty key="handlers" value="securityHandler" />-->
+
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
+			<!--<endpointProperty key="handlers" value="securityHandler" />-->
 			<endpointProperty key="httpClient.idleTimeout" value="5000" />
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>

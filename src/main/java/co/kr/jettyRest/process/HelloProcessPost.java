@@ -40,8 +40,5 @@ public class HelloProcessPost implements Processor{
         }catch(Exception e){ //custom eror ocurr~
             CustomErrorResponse.setErrorResponse(exchange,"CUSTOM ERROR RESPONSE ~~" ,"text/plain" , 502);
         }
-
-
-
     }
 }
