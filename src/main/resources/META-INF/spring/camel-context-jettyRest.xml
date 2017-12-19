@@ -15,8 +15,34 @@
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
-	<!-- Jetty Security handling START -->
+	<!--
+		Jetty Security handling START
+		rest 태그당 적용되는거라서 별도의 옵션을 넣지않고 rest 태그를 두개설정할 경우 에러가 발생 한다.
+	-->
+	<bean id="constraint" class="org.eclipse.jetty.util.security.Constraint">
+		<property name="name" value="BASIC"/>
+		<property name="roles" value="rolename"/>
+		<property name="authenticate" value="true"/>
+	</bean>
 
+	<bean id="constraintMapping" class="org.eclipse.jetty.security.ConstraintMapping">
+		<property name="constraint" ref="constraint"/>
+		<property name="pathSpec" value="/*"/>
+	</bean>
+
+	<bean id="securityHandler" class="org.eclipse.jetty.security.ConstraintSecurityHandler">
+		<property name="loginService">
+			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
+		</property>
+		<!--<property name="authenticator">
+			<bean class="org.eclipse.jetty.security.authentication.BasicAuthenticator"/>
+		</property>-->
+		<property name="constraintMappings">
+			<list>
+				<ref bean="constraintMapping"/>
+			</list>
+		</property>
+	</bean>
 	<!-- Jetty Security handling END -->
 
 	<!-- 스프링 빈을 이용하여 프로세서를 정의한다.-->
@@ -30,13 +56,12 @@
 			bindingMode="json" json으로 지정
 		-->
 		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true">
-
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
-			<!--<endpointProperty key="handlers" value="securityHandler" />-->
-			<endpointProperty key="httpClient.idleTimeout" value="5000" />
+			<!--<endpointProperty key="httpClient.idleTimeout" value="5000" />-->
+			<endpointProperty key="handlers" value="securityHandler" />
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
-			<dataFormatProperty key="prettyPrint" value="true" />
+			<!--<dataFormatProperty key="prettyPrint" value="true" />-->
 		</restConfiguration>
 
 		<!--
@@ -59,11 +84,14 @@
 			});
 
 		-->
+
+		<!--
 		<rest path="/say">
 			<get uri="/hello" consumes="application/json">
 				<to uri="bean:helloProcess" />
 			</get>
 		</rest>
+		-->
 
 		<!--
 			### POST 방식 기술 ####
