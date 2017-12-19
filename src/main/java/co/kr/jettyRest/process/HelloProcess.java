@@ -1,24 +1,22 @@
 package co.kr.jettyRest.process;
 
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import org.apache.camel.Exchange;
+import org.apache.camel.Processor;
+import org.apache.camel.spi.DataFormat;
+
+import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletResponse;
-
-import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
-import org.apache.camel.spi.DataFormat;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-
 /**
  * Created by v.jyheo on 2017-12-15.
- * ì„¤ëª… : exchange ì‚¬ìš©ë°©ë²•ì„ ìµœëŒ€í•œ ê¸°ìˆ  í•˜ë„ë¡ í•œë‹¤.
- *       http rest ê¸°ë°˜ì˜ ê°’ë“¤ì„ ì–´ë–»ê²Œ ê°€ì ¸ì˜¤ëŠ”ì§€ í™•ì¼ í• ìˆ˜ ìˆë„ë¡ í•œë‹¤.
+ * ?„¤ëª? : exchange ?‚¬?š©ë°©ë²•?„ ìµœë??•œ ê¸°ìˆ  ?•˜?„ë¡? ?•œ?‹¤.
+ *       http rest ê¸°ë°˜?˜ ê°’ë“¤?„ ?–´?–»ê²? ê°?? ¸?˜¤?Š”ì§? ?™•?¼ ?• ?ˆ˜ ?ˆ?„ë¡? ?•œ?‹¤.
  */
 public class HelloProcess implements Processor , DataFormat{
 	private ObjectMapper jacksonMapper;

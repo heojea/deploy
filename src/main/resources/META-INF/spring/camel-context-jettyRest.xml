@@ -20,7 +20,7 @@
 	<bean id="helloProcessPost" class="co.kr.jettyRest.process.HelloProcessPost" />
 
 	<!-- custom unmarshal  -->
-	<!--<bean id="customUnmarshal" class="co.kr.jettyRest.process.marshal.CustomUnmarshal" />-->
+	<!--<bean id="customUnmarshal" class="CustomUnmarshal" />-->
 
 	<camelContext xmlns="http://camel.apache.org/schema/spring">
 		<!--

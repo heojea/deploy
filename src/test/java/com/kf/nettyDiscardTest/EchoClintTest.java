@@ -59,7 +59,7 @@ class EchoClientHandler extends ChannelInboundHandlerAdapter {
 
 	@Override
 	public void channelActive(ChannelHandlerContext ctx) throws Exception {
-		ByteBuf byteBuf = Unpooled.buffer();
+		/*ByteBuf byteBuf = Unpooled.buffer();
 		
 		Path path = Paths.get("C:/workspace_sts/netty/src/test/java/documents/A_네티테스트");
 		RandomAccessFile raf = new RandomAccessFile(path.toFile() , "r" );
@@ -75,7 +75,7 @@ class EchoClientHandler extends ChannelInboundHandlerAdapter {
 			ctx.write(byteBuf);
 			byteBuf.retain();
 			ctx.flush();
-		}
+		}*/
 	}
 
 	@Override

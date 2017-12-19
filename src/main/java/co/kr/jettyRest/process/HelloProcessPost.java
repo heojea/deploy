@@ -1,7 +1,7 @@
 package co.kr.jettyRest.process;
 
 
-import co.kr.jettyRest.process.exception.CustomErrorResponse;
+import co.kr.jettyRest.exception.CustomErrorResponse;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
@@ -11,8 +11,8 @@ import java.util.Map;
 
 /**
  * Created by v.jyheo on 2017-12-15.
- * ì„¤ëª… : exchange ì‚¬ìš©ë°©ë²•ì„ ìµœëŒ€í•œ ê¸°ìˆ  í•˜ë„ë¡ í•œë‹¤.
- *       http rest ê¸°ë°˜ì˜ ê°’ë“¤ì„ ì–´ë–»ê²Œ ê°€ì ¸ì˜¤ëŠ”ì§€ í™•ì¼ í• ìˆ˜ ìˆë„ë¡ í•œë‹¤.
+ * ?„¤ëª? : exchange ?‚¬?š©ë°©ë²•?„ ìµœë??•œ ê¸°ìˆ  ?•˜?„ë¡? ?•œ?‹¤.
+ *       http rest ê¸°ë°˜?˜ ê°’ë“¤?„ ?–´?–»ê²? ê°?? ¸?˜¤?Š”ì§? ?™•?¼ ?• ?ˆ˜ ?ˆ?„ë¡? ?•œ?‹¤.
  */
 public class HelloProcessPost implements Processor{
     public void process(Exchange exchange) throws Exception {
@@ -34,9 +34,14 @@ public class HelloProcessPost implements Processor{
         payload.put("id", "2");
         payload.put("content", "User");
 
-        //response body ë‚´ìš©ì„ ê¸°ìˆ 
-        exchange.getOut().setBody(payload);
+        //response body binding
+        try{
+            exchange.getOut().setBody(payload);
+        }catch(Exception e){ //custom eror ocurr~
+            CustomErrorResponse.setErrorResponse(exchange,"CUSTOM ERROR RESPONSE ~~" ,"text/plain" , 502);
+        }
 
-        CustomErrorResponse.setErrorResponse(exchange,"CUSTOM ERROR RESPONSE ~~" ,"text/plain" , 502);
+
+
     }
 }

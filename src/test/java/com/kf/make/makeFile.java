@@ -1,4 +1,4 @@
-package com.kf.파일만들기;
+package com.kf.make;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
@@ -11,7 +11,7 @@ import org.apache.commons.lang3.*;
 
 public class makeFile {
 	public static void main(String[] args) throws IOException{
-		 Path to = Paths.get("C:/workspace_sts/netty/src/test/java/documents/C_네티테스트");
+		 /*Path to = Paths.get("C:/workspace_sts/netty/src/test/java/documents/C_네티테스트");
 	     FileChannel fileChannel_to = FileChannel.open(to, StandardOpenOption.CREATE , StandardOpenOption.WRITE);
 	     ByteBuffer byteBuf = ByteBuffer.allocate(11);
 	     
@@ -23,7 +23,7 @@ public class makeFile {
 	    	 fileChannel_to.write(byteBuf);
 		 }
 	     
-	     fileChannel_to.close();
+	     fileChannel_to.close();*/
 	}
 	
 }
