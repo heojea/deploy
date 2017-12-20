@@ -26,17 +26,20 @@
 	</bean>
 
 	<bean id="constraintMapping" class="org.eclipse.jetty.security.ConstraintMapping">
-		<property name="constraint" ref="constraint"/>
-		<property name="pathSpec" value="/*"/>
+		<property name="constraint" ref="constraint" />
+		<property name="pathSpec" value="/*" />
 	</bean>
 
 	<bean id="securityHandler" class="org.eclipse.jetty.security.ConstraintSecurityHandler">
 		<property name="loginService">
 			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
 		</property>
-		<!--<property name="authenticator">
-			<bean class="org.eclipse.jetty.security.authentication.BasicAuthenticator"/>
+		<!--<property name="loginService">
+			<bean class="org.eclipse.jetty.security.HashLoginService" />
 		</property>-->
+		<property name="authenticator">
+			<bean class="org.eclipse.jetty.security.authentication.BasicAuthenticator"/>
+		</property>
 		<property name="constraintMappings">
 			<list>
 				<ref bean="constraintMapping"/>
@@ -54,14 +57,17 @@
 		<!--
 			레스트 서버로 활용될 서저를 지정하고 옵션을 정의 한다.
 			bindingMode="json" json으로 지정
+			enableCORS="true"  크로스 도메인에서 통신시 true
 		-->
-		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true">
+		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true" >
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
 			<!--<endpointProperty key="httpClient.idleTimeout" value="5000" />-->
 			<!--<endpointProperty key="handlers" value="securityHandler" />-->
+			<dataFormatProperty key="prettyPrint" value="true" />
+			<!--
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
-			<!--<dataFormatProperty key="prettyPrint" value="true" />-->
+			-->
 		</restConfiguration>
 
 		<!--
@@ -76,22 +82,19 @@
 						console.log(response);
 					},
 					complete: function (response) {
-						alert("complete ~~");
+						console.log("complete ~~");
 					},
 					error: function (response) {
-						alert("Falla - " + response.d);
+						console.log("Falla - " + response.d);
 					}
 			});
 
 		-->
-
-		<!--
 		<rest path="/say">
 			<get uri="/hello" consumes="application/json">
 				<to uri="bean:helloProcess" />
 			</get>
 		</rest>
-		-->
 
 		<!--
 			### POST 방식 기술 ####
@@ -105,10 +108,10 @@
 						console.log(response);
 					},
 					complete: function (response) {
-						alert("complete ~~");
+						console.log("complete ~~");
 					},
 					error: function (response) {
-						alert("Falla - " + response.d);
+						console.log("Falla - " + response);
 					}
 				});
 		-->

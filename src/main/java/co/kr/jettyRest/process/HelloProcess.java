@@ -1,11 +1,13 @@
 package co.kr.jettyRest.process;
 
 
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 import org.apache.camel.spi.DataFormat;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.InputStream;
@@ -19,6 +21,7 @@ import java.util.Map;
  *       http rest Í∏∞Î∞ò?ùò Í∞íÎì§?ùÑ ?ñ¥?ñªÍ≤? Í∞??†∏?ò§?äîÏß? ?ôï?ùº ?ï†?àò ?ûà?èÑÎ°? ?ïú?ã§.
  */
 public class HelloProcess implements Processor , DataFormat{
+
 	private ObjectMapper jacksonMapper;
 	  
     public void process(Exchange exchange) throws Exception {
@@ -38,11 +41,13 @@ public class HelloProcess implements Processor , DataFormat{
         //String responseString = "{\"id\":2,\"content\":\"Hello, User!\"}";
         
         Map<String,String> payload = new HashMap<>();
-        payload.put("id","2");
-        payload.put("content","User");
+        payload.put("id", "1111");
+        payload.put("content", "ddfadsf");
+
+        exchange.getOut().setBody(payload);
 
         //String json = new ObjectMapper().writeValueAsString(payload);
-        this.marshal(exchange, payload , response.getOutputStream());
+        //this.marshal(exchange, payload , response.getOutputStream());
         
     }
 

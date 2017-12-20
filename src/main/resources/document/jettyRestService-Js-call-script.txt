@@ -1,0 +1,79 @@
+
+	$.ajax({
+	  url: "http://localhost:9090/say/hello"
+	  ,method  : "GET"
+	  
+	}).done(function(data, status) {
+	   console.log(data);
+		console.log("nStatus: " + status);
+	})  .fail(function() {
+		alert( "method:get ==> error" );
+	});
+  
+  
+  $.ajax({
+	method : "POST",
+	url: "http://localhost:9090/postUrl/bye",
+	data: JSON.stringify({user:'heojea',name:'deahan'}),
+	contentType : "text/plain",
+	crossDomain : true,
+	success: function (response) {
+		console.log("response);
+	},
+	complete: function (response) {
+        alert("complete ~~");
+    },
+    error: function (response) {
+        alert("Falla - " + response.d);
+    }
+  });
+
+  
+  <form name="ReadingInfoSelectForm" id="ReadingInfoSelectForm" action="" method="post">
+	<table>
+		<tr>
+	  		<td>
+				사용자ID : <input type="text" size="50" name="UserID" value="hema30" /><br/>
+				도서ID : <input type="text" size="50" name="BookID" value="uuid:35aeb750-ee9f-4813-be49-c43a0df68475" /><br/>
+	  		</td>
+	 	</tr>
+	 	<tr>
+	  		<td align="right">
+	   			<input type="button" id="ReadingInfoSelectBtn" name="ReadingInfoSelectBtn" value="전송"/>
+	  		</td>
+	 	</tr>
+	</table>
+</form>
+
+var formData = $("#ReadingInfoSelectForm").serializeObject();  //폼데이터를 jsos형태로 추출 한다.
+			
+   $.ajax({
+	type : "POST",
+	url: "http://localhost:9090/postUrl/bye",
+	data: JSON.stringify(formData),
+	contentType : "text/plain",
+  })
+  .done(function( data ) {
+    console.log(data );
+  }).fail(function() {
+	alert( "method:get ==> error" );
+  });
+  
+  
+########## rest service auth 관련  ##########  
+ $.ajax({
+		
+		url: "http://localhost:9090/say/hello",
+		data: JSON.stringify({username:'ralph',password:'s3cr3t'}),
+		contentType : "text/plain", // 있어도 되고 없어도 되고
+		dataType : "jsonp",
+		success: function (response) {
+			console.log(response);
+		},
+		complete: function (response) {
+			console.log("complete ~~");
+		},
+		error: function (response) {
+			console.log(response);
+		}
+});
