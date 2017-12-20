@@ -17,7 +17,7 @@ import java.util.ArrayList;
  * ?���? : exchange ?��?��방법?�� 최�??�� 기술 ?��?���? ?��?��.
  *       http rest 기반?�� 값들?�� ?��?���? �??��?��?���? ?��?�� ?��?�� ?��?���? ?��?��.
  */
-public class HelloProcessPost implements Processor{
+public class HelloProcessDelete implements Processor{
     public void process(Exchange exchange) throws Exception {
         /*
         System.out.println("exchange.toString():::"+exchange.toString());
@@ -36,7 +36,7 @@ public class HelloProcessPost implements Processor{
         List<Map> list = new ArrayList();
         Map<String,String> payload = new HashMap<>();
         payload.put("id", "2");
-        payload.put("content", "User");
+        payload.put("content", "DELETE");
         list.add(payload);
 
         payload = new HashMap<>();
