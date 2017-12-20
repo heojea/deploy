@@ -1,7 +1,7 @@
 package co.kr.jettyRest.process;
 
 
-import co.kr.jettyRest.exception.CustomErrorResponse;
+//import co.kr.jettyRest.exception.CustomErrorResponse;
 import org.apache.camel.Exchange;
 import org.apache.camel.Processor;
 
@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 /**
  * Created by v.jyheo on 2017-12-15.
- * ?„¤ëª? : exchange ?‚¬?š©ë°©ë²•?„ ìµœë??•œ ê¸°ìˆ  ?•˜?„ë¡? ?•œ?‹¤.
- *       http rest ê¸°ë°˜?˜ ê°’ë“¤?„ ?–´?–»ê²? ê°?? ¸?˜¤?Š”ì§? ?™•?¼ ?• ?ˆ˜ ?ˆ?„ë¡? ?•œ?‹¤.
+ * ?ï¿½ï¿½ï¿½? : exchange ?ï¿½ï¿½?ï¿½ï¿½ë°©ë²•?ï¿½ï¿½ ìµœï¿½??ï¿½ï¿½ ê¸°ìˆ  ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½.
+ *       http rest ê¸°ë°˜?ï¿½ï¿½ ê°’ë“¤?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ï¿½??ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½?ï¿½ï¿½ï¿½? ?ï¿½ï¿½?ï¿½ï¿½.
  */
 public class HelloProcessPost implements Processor{
     public void process(Exchange exchange) throws Exception {
@@ -50,7 +50,7 @@ public class HelloProcessPost implements Processor{
         try{
             exchange.getOut().setBody(list);
         }catch(Exception e){ //custom eror ocurr~
-            CustomErrorResponse.setErrorResponse(exchange,"CUSTOM ERROR RESPONSE ~~" ,"text/plain" , 502);
+            //CustomErrorResponse.setErrorResponse(exchange,"CUSTOM ERROR RESPONSE ~~" ,"text/plain" , 502);
         }
     }
 }
