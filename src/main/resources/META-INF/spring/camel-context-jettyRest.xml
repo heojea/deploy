@@ -31,12 +31,14 @@
 	</bean>
 
 	<bean id="securityHandler" class="org.eclipse.jetty.security.ConstraintSecurityHandler">
-		<property name="loginService">
-			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
-		</property>
 		<!--<property name="loginService">
-			<bean class="org.eclipse.jetty.security.HashLoginService" />
+			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
 		</property>-->
+		<property name="loginService">
+			<bean class="org.eclipse.jetty.security.HashLoginService">
+				<constructor-arg name="name" value="customName" />
+			</bean>
+		</property>
 		<property name="authenticator">
 			<bean class="org.eclipse.jetty.security.authentication.BasicAuthenticator"/>
 		</property>
@@ -62,7 +64,7 @@
 		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true" >
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
 			<!--<endpointProperty key="httpClient.idleTimeout" value="5000" />-->
-			<!--<endpointProperty key="handlers" value="securityHandler" />-->
+			<endpointProperty key="handlers" value="securityHandler" />
 			<dataFormatProperty key="prettyPrint" value="true" />
 			<!--
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
@@ -75,7 +77,7 @@
 			### client ajax GET call 방식 기술
 			$.ajax({
 					method : "GET",
-					url: "http://localhost:9090/say/hello",
+					url: "http://localhost:9090/api/hello",
 					data: {user:'GET-heojea',name:'GET-abcde'},
 					contentType : "text/plain", // 있어도 되고 없어도 되고
 					success: function (response) {
@@ -90,18 +92,12 @@
 			});
 
 		-->
-		<rest path="/say">
-			<get uri="/hello" consumes="application/json">
-				<to uri="bean:helloProcess" />
-			</get>
-		</rest>
-
 		<!--
 			### POST 방식 기술 ####
 			### client ajax POST call 방식 기술
 			   $.ajax({
 					method : "POST",
-					url: "http://localhost:9090/postUrl/bye",
+					url: "http://localhost:9090/api/bye",
 					data: JSON.stringify({user:'heojea',name:'deahan'}),  //POST 방식은 꼭 stringify 해줘야함 에러남
 					contentType : "text/plain",    // 꼭 있어야됨 에러남
 					success: function (response) {
@@ -115,10 +111,9 @@
 					}
 				});
 		-->
-		<rest path="/postUrl" >
-			<post uri="/bye">
-				<to uri="bean:helloProcessPost" />
-			</post>
+		<rest path="/api">
+			<post uri="/bye">  <to uri="bean:helloProcessPost" /></post>
+			<get  uri="/hello"><to uri="bean:helloProcess" />    </get>
 		</rest>
 
 		<!-- router 정의 부분  -->
