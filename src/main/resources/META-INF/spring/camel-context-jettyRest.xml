@@ -31,14 +31,14 @@
 	</bean>
 
 	<bean id="securityHandler" class="org.eclipse.jetty.security.ConstraintSecurityHandler">
-		<!--<property name="loginService">
-			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
-		</property>-->
 		<property name="loginService">
+			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
+		</property>
+		<!--<property name="loginService">
 			<bean class="org.eclipse.jetty.security.HashLoginService">
 				<constructor-arg name="name" value="customName" />
 			</bean>
-		</property>
+		</property>-->
 		<property name="authenticator">
 			<bean class="org.eclipse.jetty.security.authentication.BasicAuthenticator"/>
 		</property>
