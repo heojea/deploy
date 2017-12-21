@@ -90,9 +90,6 @@
 						console.log("Falla - " + response.d);
 					}
 			});
-
-		-->
-		<!--
 			### POST 방식 기술 ####
 			### client ajax POST call 방식 기술
 			   $.ajax({
