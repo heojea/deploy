@@ -30,10 +30,10 @@
 		<property name="pathSpec" value="/*" />
 	</bean>
 
-	<bean id="securityHandler" class="org.eclipse.jetty.security.ConstraintSecurityHandler">
-		<property name="loginService">
-			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
-		</property>
+	<bean id="loginService" class="co.kr.jettyRest.security.HardcodedLoginService" />
+
+	<bean id="securityHandler" class="co.kr.jettyRest.security.ConstraintSecurityHandlerImpl">
+		<property name="loginService" ref="loginService" />
 		<!--<property name="loginService">
 			<bean class="org.eclipse.jetty.security.HashLoginService">
 				<constructor-arg name="name" value="customName" />
@@ -63,10 +63,10 @@
 			bindingMode="json" json으로 지정
 			enableCORS="true"  크로스 도메인에서 통신시 true
 		-->
-		<restConfiguration component="jetty" host="localhost" port="9090" bindingMode="json"  enableCORS="true" >
+		<restConfiguration component="jetty" host="127.0.0.1" port="9090" bindingMode="json"  enableCORS="true" scheme="http" >
 			<!--<endpointProperty key="sessionSupport" value="true" />-->
 			<!--<endpointProperty key="httpClient.idleTimeout" value="5000" />-->
-			<!-- <endpointProperty key="handlers" value="securityHandler" /> -->
+			<endpointProperty   key="handlers" value="securityHandler" />
 			<dataFormatProperty key="prettyPrint" value="true" />
 			
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
@@ -114,7 +114,11 @@
 				});
 		-->
 		<rest path="/api">
-			<post    uri="/bye"><to uri="bean:helloProcessPost" />  </post>
+			<post    uri="/bye">
+				<route>
+					<to uri="bean:helloProcessPost"  />
+				</route>
+			</post>
 			<get     uri="/bye"><to uri="bean:helloProcess" />      </get>
 			<put     uri="/bye"><to uri="bean:helloProcessPut" />   </put>
 			<delete  uri="/bye"><to uri="bean:helloProcessDelete" /></delete>
