@@ -30,15 +30,13 @@
 		<property name="pathSpec" value="/*" />
 	</bean>
 
-	<bean id="loginService" class="co.kr.jettyRest.security.HardcodedLoginService" />
-
 	<bean id="securityHandler" class="co.kr.jettyRest.security.ConstraintSecurityHandlerImpl">
-		<property name="loginService" ref="loginService" />
-		<!--<property name="loginService">
-			<bean class="org.eclipse.jetty.security.HashLoginService">
-				<constructor-arg name="name" value="customName" />
-			</bean>
-		</property>-->
+		<!--
+		임의 클래스 ConstraintSecurityHandlerImpl class에서 주입하도록 수정
+		<property name="loginService">
+			<bean class="co.kr.jettyRest.security.HardcodedLoginService" />
+		</property>
+		-->
 		<property name="authenticator">
 			<bean class="org.eclipse.jetty.security.authentication.BasicAuthenticator"/>
 		</property>
