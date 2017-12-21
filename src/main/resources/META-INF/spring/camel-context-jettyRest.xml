@@ -20,7 +20,7 @@
 		rest 태그당 적용되는거라서 별도의 옵션을 넣지않고 rest 태그를 두개설정할 경우 에러가 발생 한다.
 	-->
 	<bean id="constraint" class="org.eclipse.jetty.util.security.Constraint">
-		<property name="name" value="BASIC"/>
+		<property name="name" value="CLIENT_CERT"/>
 		<property name="roles" value="rolename"/>
 		<property name="authenticate" value="true"/>
 	</bean>
