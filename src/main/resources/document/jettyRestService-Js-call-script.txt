@@ -2,7 +2,7 @@
 	$.ajax({
 	  url: "http://localhost:9090/say/hello"
 	  ,method  : "GET"
-	  
+	  ,data: JSON.stringify({user:'heojea',name:'deahan'})
 	}).done(function(data, status) {
 	   console.log(data);
 		console.log("nStatus: " + status);
@@ -62,11 +62,17 @@ var formData = $("#ReadingInfoSelectForm").serializeObject();  //폼데이터를
   
 ########## rest service auth 관련  ##########  
  $.ajax({
-		
-		url: "http://localhost:9090/say/hello",
+		type : "GET",
+		url: "http://localhost:9090/api/hello",
 		data: JSON.stringify({username:'ralph',password:'s3cr3t'}),
-		contentType : "text/plain", // 있어도 되고 없어도 되고
-		dataType : "jsonp",
+		contentType: "application/json",
+		accepts: "application/json",
+		dataType: 'jsonp',
+		beforeSend: function (xhr) {
+			xhr.setRequestHeader("Authorization", 
+				"Basic " + btoa('ralph' + ":" + 's3cr3t'));
+		},
+                
 		success: function (response) {
 			console.log(response);
 		},
@@ -77,3 +83,22 @@ var formData = $("#ReadingInfoSelectForm").serializeObject();  //폼데이터를
 			console.log(response);
 		}
 });
+
+
+
+
+url: uri,
+                type: method,
+                contentType: "application/json",
+                accepts: "application/json",
+                cache: false,
+                dataType: 'json',
+                data: JSON.stringify(data),
+                beforeSend: function (xhr) {
+                    xhr.setRequestHeader("Authorization", 
+                        "Basic " + btoa(self.username + ":" + self.password));
+                },
+                error: function(jqXHR) {
+                    console.log("ajax error " + jqXHR.status);
+                }
+
