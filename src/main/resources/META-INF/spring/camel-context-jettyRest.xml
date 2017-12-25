@@ -66,10 +66,8 @@
 			<!--<endpointProperty key="httpClient.idleTimeout" value="5000" />-->
 			<endpointProperty   key="handlers" value="securityHandler" />
 			<dataFormatProperty key="prettyPrint" value="true" />
-			
 			<dataFormatProperty key="json.in.disableFeatures" value="FAIL_ON_UNKNOWN_PROPERTIES,ADJUST_DATES_TO_CONTEXT_TIME_ZONE"/>
 			<dataFormatProperty key="json.in.enableFeatures" value="FAIL_ON_NUMBERS_FOR_ENUMS,USE_BIG_DECIMAL_FOR_FLOATS"/>
-			
 		</restConfiguration>
 
 		<!--
@@ -108,6 +106,7 @@
 					}
 				});
 		-->
+
 		<rest path="/api">
 			<post    uri="/bye">
 				<route>
@@ -118,6 +117,7 @@
 			<put     uri="/bye"><to uri="bean:helloProcessPut" />   </put>
 			<delete  uri="/bye"><to uri="bean:helloProcessDelete" /></delete>
 		</rest>
+
 
 		<!-- router 정의 부분  -->
 		<!--<route>
