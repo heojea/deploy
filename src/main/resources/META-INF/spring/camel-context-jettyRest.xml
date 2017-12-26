@@ -49,9 +49,9 @@
 	<!-- Jetty Security handling END -->
 
 	<!-- 스프링 빈을 이용하여 프로세서를 정의한다.-->
-	<bean id="helloProcess"     class="co.kr.jettyRest.process.HelloProcess" />
-	<bean id="helloProcessPost" class="co.kr.jettyRest.process.HelloProcessPost" />
-	<bean id="helloProcessPut" class="co.kr.jettyRest.process.HelloProcessPut" />
+	<bean id="helloProcess"       class="co.kr.jettyRest.process.HelloProcess"     />
+	<bean id="helloProcessPost"   class="co.kr.jettyRest.process.HelloProcessPost" />
+	<bean id="helloProcessPut"    class="co.kr.jettyRest.process.HelloProcessPut"  />
 	<bean id="helloProcessDelete" class="co.kr.jettyRest.process.HelloProcessDelete" />
 
 	<!-- camel Context -->
@@ -108,14 +108,15 @@
 		-->
 
 		<rest path="/api">
-			<post    uri="/bye">
+			<get    uri="/bye"><to uri="bean:helloProcess" />      </get>
+			<post   uri="/bye">
 				<route>
 					<to uri="bean:helloProcessPost"  />
 				</route>
 			</post>
-			<get     uri="/bye"><to uri="bean:helloProcess" />      </get>
-			<put     uri="/bye"><to uri="bean:helloProcessPut" />   </put>
-			<delete  uri="/bye"><to uri="bean:helloProcessDelete" /></delete>
+
+			<put    uri="/bye"><to uri="bean:helloProcessPut" />   </put>
+			<delete uri="/bye"><to uri="bean:helloProcessDelete" /></delete>
 		</rest>
 
 
