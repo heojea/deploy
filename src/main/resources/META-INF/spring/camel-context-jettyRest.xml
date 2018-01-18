@@ -22,7 +22,7 @@
 	<bean id="constraint" class="org.eclipse.jetty.util.security.Constraint">
 		<property name="name" value="BASIC"/>
 		<property name="roles" value="rolename"/>
-		<property name="authenticate" value="false"/>
+		<property name="authenticate" value="true"/>
 	</bean>
 
 	<bean id="constraintMapping" class="org.eclipse.jetty.security.ConstraintMapping">
