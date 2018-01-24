@@ -28,8 +28,8 @@
 		 -->
 		<!-- camel netty4 tcp -->
 		<route>
-			<from uri="netty4:tcp://localhost:22222?workerCount=1&amp;serverPipelineFactory=#serverInitFactory" />
-			<log message="[SERVER]message:[${body}]" loggingLevel="DEBUG"></log>
+			<from uri="netty4:tcp://localhost:22222?sync=false&amp;workerCount=1&amp;serverPipelineFactory=#serverInitFactory" />
+			<log message="[SERVER]message:[${body}]" loggingLevel="INFO"></log>
 		</route>
 	</camelContext>
 
