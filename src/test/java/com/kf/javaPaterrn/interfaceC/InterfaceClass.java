@@ -5,4 +5,11 @@ package com.kf.javaPaterrn.interfaceC;
  */
 public interface InterfaceClass {
     public void worker();
+
+    public void init();
+    public void head();
+    public void body();
+    public void tail();
+
+
 }
