@@ -1,4 +1,4 @@
-package co.kr.init.server;
+package co.kr.nettyProject.server;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelPipeline;
@@ -8,7 +8,7 @@ import org.apache.camel.component.netty4.ServerInitializerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import co.kr.handler.server.ServerInBoundHandHandler;
+import co.kr.nettyProject.handler.server.ServerInBoundHandHandler;
 
 public class ServerInitFactory extends ServerInitializerFactory  {
 	private Logger LOG = LoggerFactory.getLogger(ServerInitFactory.class);

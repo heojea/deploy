@@ -8,17 +8,17 @@
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
 
 	<!-- client init factory -->
-	<bean id="clientInitFactory" class="co.kr.init.client.ClientInitFactory" />
-	<bean id="serverInitFactory" class="co.kr.init.server.ServerInitFactory" />
+	<bean id="clientInitFactory" class="co.kr.nettyProject.client.ClientInitFactory" />
+	<bean id="serverInitFactory" class="co.kr.nettyProject.server.ServerInitFactory" />
 
 
 	<!-- test data make -->
-	<bean id="getByteBuf" class="co.kr.vo.ByteBufFactory" init-method="getByteBuf" />
-	<bean id="getString" class="co.kr.vo.StringFactory" init-method="getString" />
-	<bean id="getByteArr" class="co.kr.vo.ByteArrFactory" init-method="getByteArr" />
+	<bean id="getByteBuf" class="co.kr.nettyProject.vo.ByteBufFactory" init-method="getByteBuf" />
+	<bean id="getString" class="co.kr.nettyProject.vo.StringFactory" init-method="getString" />
+	<bean id="getByteArr" class="co.kr.nettyProject.vo.ByteArrFactory" init-method="getByteArr" />
 	
 	<!-- convert  -->
-	<bean id="stringToByteBuf_Convert" class="co.kr.converter.StringToByteBuf" />
+	<bean id="stringToByteBuf_Convert" class="co.kr.nettyProject.converter.StringToByteBuf" />
 	
 	<camelContext xmlns="http://camel.apache.org/schema/spring" >
 		<!--

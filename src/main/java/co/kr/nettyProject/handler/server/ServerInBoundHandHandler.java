@@ -1,8 +1,7 @@
-package co.kr.handler.server;
+package co.kr.nettyProject.handler.server;
 
 import java.net.SocketAddress;
 
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;

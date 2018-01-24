@@ -1,4 +1,4 @@
-package co.kr.vo;
+package co.kr.nettyProject.vo;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;

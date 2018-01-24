@@ -1,5 +1,6 @@
-package co.kr.init.client;
+package co.kr.nettyProject.client;
 
+import co.kr.nettyProject.handler.client.ClientInBoundHandHandler;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelPipeline;
 
@@ -7,8 +8,6 @@ import org.apache.camel.component.netty4.ClientInitializerFactory;
 import org.apache.camel.component.netty4.NettyProducer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import co.kr.handler.client.ClientInBoundHandHandler;
 
 public class ClientInitFactory extends ClientInitializerFactory  {
 	private Logger LOG = LoggerFactory.getLogger(ClientInitFactory.class);

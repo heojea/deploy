@@ -1,4 +1,4 @@
-package co.kr.vo;
+package co.kr.nettyProject.vo;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
