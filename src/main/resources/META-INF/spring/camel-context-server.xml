@@ -10,7 +10,6 @@
 	<!-- client init factory -->
 	<bean id="serverInitFactory" class="co.kr.nettyProject.server.ServerInitFactory" />
 
-
 	<!-- test data make -->
 	<bean id="getByteBuf" class="co.kr.nettyProject.vo.ByteBufFactory" init-method="getByteBuf" />
 	<bean id="getString"  class="co.kr.nettyProject.vo.StringFactory"  init-method="getString" />
@@ -26,7 +25,7 @@
 		 -->
 		<!-- camel netty4 tcp -->
 		<route>
-			<from uri="netty4:tcp://localhost:22222?connectTimeout=10&amp;keepAlive=true&amp;sync=false&amp;workerCount=1&amp;serverPipelineFactory=#serverInitFactory" />
+			<from uri="netty4:tcp://localhost:22222?serverPipelineFactory=#serverInitFactory" />
 			<log message="[SERVER]message:[${body}]" loggingLevel="INFO"></log>
 		</route>
 	</camelContext>
