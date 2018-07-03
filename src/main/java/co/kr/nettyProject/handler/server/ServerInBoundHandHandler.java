@@ -18,6 +18,7 @@ import org.apache.camel.util.CamelLogger;
 import org.apache.camel.util.IOHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.apache.camel.component.netty4.SingleTCPNettyServerBootstrapFactory;
 
 public class ServerInBoundHandHandler extends ChannelInboundHandlerAdapter {
 	private Logger LOG = LoggerFactory.getLogger(ServerInBoundHandHandler.class);
@@ -35,11 +36,15 @@ public class ServerInBoundHandHandler extends ChannelInboundHandlerAdapter {
             LOG.trace("Channel open: {}", ctx.channel());
         }
         
-        LOG.debug("[SERVER]channelActive:{}",ctx.channel().id());
+
         // to keep track of open sockets
         consumer.getNettyServerBootstrapFactory().addChannel(ctx.channel());
-    }
 
+
+        LOG.debug("[SERVER] Add channelActive:channel.id:{}", ctx.channel().id());
+
+        //LOG.debug("[SERVER] total chanel size:{}", );
+    }
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
@@ -73,8 +78,8 @@ public class ServerInBoundHandHandler extends ChannelInboundHandlerAdapter {
 
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
-        if (LOG.isTraceEnabled()) {
-            LOG.trace("Channel closed: {}", ctx.channel());
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Channel closed: {}", ctx.channel());
         }
         // to keep track of open sockets
         consumer.getNettyServerBootstrapFactory().removeChannel(ctx.channel());

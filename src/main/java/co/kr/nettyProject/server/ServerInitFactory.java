@@ -17,12 +17,12 @@ public class ServerInitFactory extends ServerInitializerFactory  {
 	public ServerInitFactory(){}
 	
 	public ServerInitFactory(NettyConsumer nettyConsumer) {
+
 		this.nettyConsumer = nettyConsumer;
 	}
 
 	@Override
 	public ServerInitializerFactory createPipelineFactory(NettyConsumer nettyConsumer) {
-		
 		return new ServerInitFactory(nettyConsumer);
 	}
 
